@@ -1,0 +1,30 @@
+.header {
+    /*! breakpoint-> 1050px */
+    height: 10%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__logo {
+    flex: 0.2;
+    height: 100%;
+    margin: 15px 10px;
+    display: flex;
+}
+.header__logo{
+    cursor: pointer;
+}
+
+.header__logo>div {
+    align-self:center;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    color: #2b2e4a;
+}
+.header__links {
+   flex: 0.6;
+}
+.header__cta {
+    flex: 0.2;
+}
