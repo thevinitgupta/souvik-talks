@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Ubuntu:wght@300;400;700&display=swap');
 .app {
     font-family: 'Ubuntu','Poppins', sans-serif;
+    background-image: url("./Codegena.png");
+    background-position: fixed;
+    background-size: cover;
 }
 .app__container {
     width : 90%;
     margin: 0 auto;
     min-height: 100vh;
+    background-color: #fff;
+    box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
+-webkit-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
+-moz-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
 }
 .contact_us {
     background-color: #2b2e4a;

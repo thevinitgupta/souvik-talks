@@ -9,7 +9,10 @@ function Footer() {
         <div className="footer">
            <FacebookIcon  fontSize="large" className="social__icon facebook"/>
           <InstagramIcon fontSize="large" className="social__icon instagram"/>
-          <YouTubeIcon   fontSize="large" className="social__icon youtube"/>  
+          <YouTubeIcon   fontSize="large" className="social__icon youtube"/>
+          <div className="credits">
+          <a href="https://www.freepik.com/vectors/people">People vector created by stories - www.freepik.com</a>
+          </div>  
         </div>
     )
 }
