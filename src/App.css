@@ -35,3 +35,23 @@
     border: 3px solid #2b2e4a;
     font-weight: 500;
 }
+.cta {
+    font-size: 1.5rem;
+    color: #fff;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #2b2e4a;
+    transition: all 400ms ease-in-out;
+}
+.cta:hover{
+    cursor: pointer;
+    transform:  translateX(5px);
+}
+.cta__youtube {
+    background-color: #cd201f;
+}
+.youtube {
+    margin-right: 5px;
+}

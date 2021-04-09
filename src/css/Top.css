@@ -60,3 +60,6 @@
 .top__right__image:hover{
    transform: scale(1.2);
 }
+.top__cta {
+   margin: 30px 0;
+}
