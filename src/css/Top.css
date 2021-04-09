@@ -1,0 +1,27 @@
+.top {
+   width: 95%;
+   height: 30%;
+   margin: 3% auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.top__left {
+   flex : 0.5;
+   height: 100%;
+}
+.top__left__mainHead{
+   font-size: 3rem;
+   font-weight: 400;
+   color: #0a043c;
+}
+.top__left__subHead{
+   font-size: 2rem;
+   font-weight: 400;
+   font-family: 'Poppins', sans-serif;
+   color: #0a043c;
+}
+.top__right {
+   flex: 0.5;
+   height: 100%;
+}

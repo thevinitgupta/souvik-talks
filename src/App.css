@@ -3,8 +3,9 @@
     font-family: 'Ubuntu','Poppins', sans-serif;
 }
 .app__container {
-    width : 80%;
+    width : 90%;
     margin: 0 auto;
+    min-height: 100vh;
 }
 .contact_us {
     background-color: #2b2e4a;
