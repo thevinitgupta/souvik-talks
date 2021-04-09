@@ -3,7 +3,7 @@ import Reading from "./reading.svg";
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import "./css/Top.css"
 
-function Main() {
+function Top() {
     return (
         <div className="top">
             <div className="top__left">
@@ -20,4 +20,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Top
