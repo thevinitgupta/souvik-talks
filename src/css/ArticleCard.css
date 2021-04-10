@@ -1,0 +1,35 @@
+.articleCard {
+    width: 90%;
+    height: 28%;
+    object-fit: contain;
+    margin: 30px 5px;
+    border: none;
+    transition: all 400ms ease-in-out;
+}
+
+.articleCard__image {
+    width: 90%;
+    height: 90%;
+}
+.articleCard__title {
+    font-size: 1rem;
+    color: #1b1929;
+}
+.articleCard >a {
+    text-decoration: none;
+    color: #1b1929;
+}
+
+.articleCard__0{
+    height: 95%;
+}
+.articleCard__0 > .articleCard__title {
+    font-size: 1.5rem;
+}
+.articleCard__0 > .articleCard__image {
+    font-size: 95%;
+}
+.articleCard:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}

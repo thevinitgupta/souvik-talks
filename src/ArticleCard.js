@@ -1,11 +1,15 @@
 import React from 'react'
+import "./css/ArticleCard.css"
 
-function ArticleCard(title,src) {
+function ArticleCard({title,src,id,link}) {
     return (
-        <div className="articleCard">
-            <img src={src} alt="article" loading="lazy"></img>
+        <div className={`articleCard articleCard__${id}`}>
+            <img src={src} alt="article" loading="lazy" className="articleCard__image"></img>
             <div className="articleCard__title">
-                {title.substr(0,10).concat("...")}
+                <a href={link}>
+                {title.substr(0,50).concat("...")}
+                </a>
+                
             </div>
         </div>
     )
