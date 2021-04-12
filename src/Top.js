@@ -10,7 +10,7 @@ function Top() {
                 <div className="top__left__mainHead">We talk to inform!</div>
                 <div className="top__left__subHead">Not to JUDGE...</div>
                 <div className="top__cta">
-                    <div className="cta cta__youtube"><YouTubeIcon   fontSize="large" className="social__icon youtube"/>Go to Channel</div> 
+                    <div className="cta cta__youtube"> <a href="https://www.youtube.com/channel/UCwnn6OdTnkRFLfm1fY8Y7sg" target="_blank" rel="noopener noreferrer"><YouTubeIcon fontSize="large" className="top__cta__social__icon"/>Go to Channel</a></div> 
                 </div>
             </div>
             <div className="top__right">

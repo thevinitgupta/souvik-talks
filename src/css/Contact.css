@@ -5,9 +5,60 @@
     border-radius: 10px;
 }
 .contact__form {
+    font-family: 'Poppins', sans-serif;
     width: 90%;
     height: 90%;
     display: flex;
+    margin-top: 40px;
     flex-direction: column;
     align-items: center;
+}
+.contact__form>input,.contact__form>textarea{
+    margin: 0;
+    margin-bottom: 40px;
+    border: none;
+    border-bottom: 2px solid #2b2e4a;
+    outline: none;
+    width: 80%;
+    height: 1.5rem;
+    font-size: 1.2rem;
+    color: #2b2e4a;
+}
+
+.contact__form>input:focus {
+    border-bottom: 4px solid #ffc93c;
+}
+
+.contact__form>textarea:focus{
+    border-bottom: 4px solid #ffc93c;
+}
+#message {
+    font-size: 1.2rem;
+    height: 100px;
+}
+#send {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px 0 10px 40px;
+    background-color: #e40017;
+    color: #fff;
+    width: 30%;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    transition: all 300ms ease-in-out;
+}
+#send:hover{
+    background-color: #ffc93c;
+    color: #2b2e4a;
+    cursor: pointer;
+}
+#send:active{
+    transform: translateX(10px);
+    
 }
