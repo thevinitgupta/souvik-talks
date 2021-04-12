@@ -1,5 +1,6 @@
 
 import './App.css';
+import Footer from './Footer';
 import Header from './Header';
 import Recent from './Recent';
 import Top from "./Top";
@@ -11,6 +12,7 @@ function App() {
         <Header/>
         <Top/>
         <Recent/>
+        <Footer/>
       </div>
       
     </div>

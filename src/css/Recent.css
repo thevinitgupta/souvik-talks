@@ -32,6 +32,9 @@
 .recent__allBlogs {
     margin: 10px 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .allBlogs {
     margin: 5px;

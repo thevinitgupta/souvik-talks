@@ -41,7 +41,6 @@ function Recent() {
             </div>
             <div className="recent__allBlogs">
                     <a href="/#" className="allBlogs">All Blogs</a>
-                    <div className="allBlogs__underline"></div>
                 </div>
         </div>
     )
