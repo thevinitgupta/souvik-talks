@@ -3,7 +3,7 @@ import Social from "./Social"
 import "../css/Header.css";
 
 
-function Header() {
+function Header({scrollToContact}) {
     return (
         <div className="header">
           <div className="header__logo">
@@ -13,7 +13,7 @@ function Header() {
           <div className="header__links">
               <Social />
           </div>
-          <div className="header__cta">
+          <div className="header__cta" onClick={scrollToContact}>
               <button className="contact_us">Contact Us</button>
           </div>
         </div>
