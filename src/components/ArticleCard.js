@@ -1,5 +1,5 @@
 import React from 'react'
-import "./css/ArticleCard.css"
+import "../css/ArticleCard.css"
 
 function ArticleCard({title,src,id,link}) {
     return (

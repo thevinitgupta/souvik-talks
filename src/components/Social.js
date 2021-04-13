@@ -1,6 +1,6 @@
 import React from 'react'
 
-import "./css/Social.css";
+import "../css/Social.css";
 function Social() {
     return (
         <div className="social">

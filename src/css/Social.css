@@ -9,7 +9,10 @@
     font-weight: 400;
     text-decoration: none;
     color: #afafaf;
-    transition: transform 200ms ease-in-out;
+
+}
+.social__link {
+    transition: transform 400ms ease-in-out;
 }
 
 .social__link:hover {

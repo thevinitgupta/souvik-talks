@@ -1,6 +1,6 @@
 import React from 'react'
 import SendIcon from '@material-ui/icons/Send';
-import "./css/Contact.css"
+import "../css/Contact.css"
 
 function Contact() {
     return (

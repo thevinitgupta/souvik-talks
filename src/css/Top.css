@@ -63,3 +63,13 @@
 .top__cta {
    margin: 30px 0;
 }
+.cta{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.cta__youtube>a {
+   height: 70%;
+   text-decoration: none;
+   color: #fff;
+}

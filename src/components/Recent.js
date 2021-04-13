@@ -1,10 +1,10 @@
 import React from 'react'
-import articleImage1 from "./images/recent1.jpg";
-import articleImage2 from "./images/recent2.jpg";
-import articleImage3 from "./images/recent3.jpg";
-import articleImage4 from "./images/recent4.jpg";
+import articleImage1 from "../images/recent1.jpg";
+import articleImage2 from "../images/recent2.jpg";
+import articleImage3 from "../images/recent3.jpg";
+import articleImage4 from "../images/recent4.jpg";
 import ArticleCard from "./ArticleCard";
-import "./css/Recent.css"
+import "../css/Recent.css"
 
 let articles = [
     {
