@@ -24,7 +24,7 @@ let recentArticle = {
     "title" : "The Goliath in Tech is here",
     "img" : articleImage1
 }
-function Recent() {
+function Recent({recent}) {
     return (
         <div className="recent">
             <div className="recent__head">
@@ -39,7 +39,9 @@ function Recent() {
                  <ArticleCard key={index} src={article.img} title={article.title} id={index+1}/>)}
             </div>
             </div>
-            <div className="recent__allBlogs">
+            <div className="recent__allBlogs" onClick={()=>{
+                console.log(recent);
+            }}>
                     <a href="/#" className="allBlogs">All Blogs</a>
                 </div>
         </div>
