@@ -6,6 +6,7 @@ import '../css/App.css';
 import firebase from "../config/firebase";
 import 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import TextEditor from './TextEditor';
 
 const scrollToContact = ()=> window.scrollTo({
   top : document.documentElement.scrollHeight,
@@ -50,6 +51,7 @@ function App() {
         <Top/>
         <Recent recent={recent}/>
         <Footer/>
+        <TextEditor/>
       </div>
       
     </div>

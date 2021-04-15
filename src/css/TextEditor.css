@@ -1,0 +1,16 @@
+.editor {
+    height: 90vh;
+    min-height: 500px;
+    width: 85%;
+    margin: 20px auto;
+}
+.editor__wrapper {
+    padding: 10px;
+    height: 100%;
+    border: none;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+}
+.editor__options{
+    margin-bottom: 45px;
+}
