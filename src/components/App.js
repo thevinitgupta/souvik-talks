@@ -3,55 +3,41 @@ import Header from './Header';
 import Recent from './Recent';
 import Top from "./Top";
 import '../css/App.css';
-import firebase from "../config/firebase";
-import 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import TextEditor from './TextEditor';
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import Post from './Post';
+import Articles from './Articles';
+
 
 const scrollToContact = ()=> window.scrollTo({
   top : document.documentElement.scrollHeight,
   behavior:"smooth"
 })
 function App() {
-  const [recent,setRecent] = useState([]);
-  // useEffect(() => {
-  //   const fetchRecentArticles = ()=> {
-  //     const db = firebase.firestore();
-
-  //     const articles = await db.collection("Articles").get();
-
-  function getArticles(){
-    const db = firebase.firestore();
-      db.collection("Articles")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-        //      doc.data() is never undefined for query doc snapshots
-          setRecent((prevValue)=> {
-            return [
-              ...prevValue,
-              {
-                id: doc.id,
-                data : doc.data()
-              }
-            ]
-          })
-         });
-    })
-    .catch((error) => {
-      console.log("Error getting articles: ", error);
-  });
-  }
-  useEffect(getArticles,[]);
-  // }, [])
+  
   return (
     <div className="app">
       <div className="app__container">
+      <Router>
         <Header scrollToContact={scrollToContact}/>
-        <Top/>
-        <Recent recent={recent}/>
-        <Footer/>
-        <TextEditor/>
+        <Switch>
+          <Route path="/" exact>
+            <Top/>
+            <Recent/>
+            <Footer/>
+          </Route>
+          <Route path="/post">
+            <Post/>
+          </Route>
+          <Route path="/article/:id">
+            <div>Article</div>
+          </Route>
+          <Route path="/all-articles">
+            <Articles/>
+            <Footer/>
+          </Route>
+        </Switch>
+      </Router>
+        
       </div>
       
     </div>
