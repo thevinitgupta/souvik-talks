@@ -33,7 +33,7 @@ function Recent({recent}) {
    useEffect(() => {
   function getArticles(){
     const db = firebase.firestore();
-      db.collection("Articles")
+      db.collection("Articles").orderBy("time","desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -73,7 +73,7 @@ function Recent({recent}) {
             </div>
             <div className="recent__others">
             {articles.map((article,index)=>
-                   index>0 && 
+                   (index>0&&index<4) && 
                   <Link to={{
                     pathname :`/article/${articles[index]?.id}`,
                     state : {article:articles[index]?.data}
