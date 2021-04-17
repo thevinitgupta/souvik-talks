@@ -63,15 +63,24 @@ function Recent({recent}) {
             </div>
             {articles && <div className="recent__articles">
             <div className="recent__latest">
-            <Link to={`/article/${articles[0]?.id}`} key={0}>
-                <ArticleCard src={articles[0]?.data?.imageUrl} title={articles[0]?.data?.title} id={articles[0]?.id}/>
+            <Link to={{
+              pathname :`/article/${articles[0]?.id}`,
+              state : {article: articles[0]?.data}
+              }} key={0} className="recent__latest__link">
+                <ArticleCard src={articles[0]?.data?.imageUrl} title={articles[0]?.data?.title} id="0"/>
             </Link>
                 
             </div>
             <div className="recent__others">
             {articles.map((article,index)=>
-                   index>0 && <Link to={`/article/${articles[0]?.id}`} key={index+1}>
-                 <ArticleCard key={articles[index]?.id} src={articles[index]?.data?.imageUrl} title={articles[index]?.data?.title}/>
+                   index>0 && 
+                  <Link to={{
+                    pathname :`/article/${articles[index]?.id}`,
+                    state : {article:articles[index]?.data}
+                    }} 
+                   key={index+1} className="recent__others__link">
+
+                    <ArticleCard key={articles[index]?.id} src={articles[index]?.data?.imageUrl} title={articles[index]?.data?.title}/>
                  </Link>
                  )} 
             </div>

@@ -25,9 +25,14 @@
     border: none;
     border-right: 2px solid gray;
 }
+
 .recent__others {
     flex: 0.3;
     height: 100%;
+}
+.recent__others__link,.recent__latest__link {
+    text-decoration: none;
+    color:#2b2e4a;
 }
 .recent__allBlogs {
     margin: 10px 0;

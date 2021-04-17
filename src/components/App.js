@@ -6,6 +6,7 @@ import '../css/App.css';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Post from './Post';
 import Articles from './Articles';
+import Article from './Article';
 
 
 const scrollToContact = ()=> window.scrollTo({
@@ -29,7 +30,7 @@ function App() {
             <Post/>
           </Route>
           <Route path="/article/:id">
-            <div>Article</div>
+            <Article/>
           </Route>
           <Route path="/all-articles">
             <Articles/>

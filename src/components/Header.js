@@ -6,7 +6,7 @@ import "../css/Header.css";
 function Header({scrollToContact}) {
     return (
         <div className="header">
-          <div className="header__logo">
+          <div className="header__logo" onClick={()=> window.location.href="/"}>
               <img src="https://www.blogger.com/img/logo_blogger_40px.png" alt="header logo"/>
               <div>Souvik Talks</div>
           </div>
