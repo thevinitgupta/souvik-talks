@@ -9,9 +9,12 @@ function Article() {
     const [article,setArticle] = useState([]);
     const [isLoaded,setIsLoaded] = useState(false);
     const [rate,setRate] = useState(0);
+    const [avgRate,setAvgRate] = useState(0);
+    const [voterNumber,setVoterNumber] = useState(0);
     const date = new Date(article?.time);
     let {id} = useParams();
     let {state} = useLocation();
+    const db = firebase.firestore();
     useEffect(()=>{
         if(state?.article){
             setArticle(state.article);
@@ -21,9 +24,20 @@ function Article() {
             getArticle()
         }
     },[])
+
+    function updateAvgRate(){
+        setAvgRate(rate)
+        db.collection("Articles").doc(id).update({
+            avgRating : avgRate,
+            totalVoters : voterNumber
+        }).then(()=>{
+            console.log("Average Rating Upated successfully!")
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
     
       function getArticle(){
-        const db = firebase.firestore();
           db.collection("Articles").doc(id)
           .get()
           .then((doc) => {
@@ -32,6 +46,7 @@ function Article() {
                 console.log(doc.data())
                 setArticle(doc.data())
                 setIsLoaded(true);
+                setAvgRate(article?.avgRating);
             }
         })
         .catch((error) => {
@@ -83,25 +98,36 @@ function Article() {
             }
             <div className="article__rating">
                 <div className="article__rating__average">
-                    <span><strong>Average Rating : </strong>{article?.avgRating}</span>
+                    <span><strong>Average Rating : </strong>{avgRate}</span>
                 </div>
                 <div className="rate__article">
                     <span className="rate__article__head"><strong>Rate :</strong></span>
                     <div class="stars">
                         <div class="star" id="1" onClick={(e)=>{
-                            handleRate(e)
+                            handleRate(e);
+                            setVoterNumber(voterNumber+1);
+                            updateAvgRate();
+                            
                         }}></div>
                         <div class="star" id="2" onClick={(e)=>{
-                            handleRate(e)
+                            handleRate(e);
+                            setVoterNumber(voterNumber+1);
+                            updateAvgRate();
                         }}></div>
                         <div class="star" id="3" onClick={(e)=>{
-                            handleRate(e)
+                            handleRate(e);
+                            setVoterNumber(voterNumber+1);
+                            updateAvgRate();
                         }}></div>
                         <div class="star" id="4" onClick={(e)=>{
-                            handleRate(e)
+                            handleRate(e);
+                            setVoterNumber(voterNumber+1);
+                            updateAvgRate();
                         }}></div>
                         <div class="star" id="5" onClick={(e)=>{
-                            handleRate(e)
+                            handleRate(e);
+                            setVoterNumber(voterNumber+1);
+                            updateAvgRate();
                         }}></div>
                     </div>
                 </div>
