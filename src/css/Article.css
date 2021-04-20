@@ -3,6 +3,7 @@
     height:200vh;
     min-height: 500px;
     margin: 20px auto;
+    font-family: "Poppins",sans-serif;
 }
 .article__main {
     height: 100vh;
@@ -36,17 +37,16 @@
     font-size: 2.5rem;
     font-weight: 550;
     color: #2a2a2a;
+    font-family: "Ubuntu","Poppins",sans-serif;
 }
 .article__main__date {
     font-weight: 300;
     font-size: 1.05rem;
-    font-family: "Poppins", sans-serif;
     color: rgb(98, 98, 126);
 }
 .article__body {
     width: 90%;
     margin: 10px auto;
-    font-family: "Poppins",sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
     color: #2a2a2a;
@@ -55,4 +55,50 @@
 .article__video {
     width: 90%;
     margin: 20px auto;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.article__rating {
+    height: 15vh;
+    width: 90%;
+    margin: 20px auto;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+}
+.article__rating__average{
+    margin-top: 10px;
+    flex: 0.4;
+}
+.rate__article {
+    margin-top: 10px;
+    flex: 0.4;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.rate__article__head{
+
+    margin-right: 10px;
+}
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.star{
+    background: gray;
+    border: 1px solid gold;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    margin-right: 5px;
+}
+.star__active {
+    background-color: gold;
 }

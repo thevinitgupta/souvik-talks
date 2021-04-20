@@ -8,6 +8,7 @@ import "../css/Article.css"
 function Article() {
     const [article,setArticle] = useState([]);
     const [isLoaded,setIsLoaded] = useState(false);
+    const [rate,setRate] = useState(0);
     const date = new Date(article?.time);
     let {id} = useParams();
     let {state} = useLocation();
@@ -37,6 +38,14 @@ function Article() {
           console.log("Error getting articles: ", error);
       });
       }
+
+      function handleRate(val){
+          const startId = parseInt(val.target.id);
+          setRate(startId);
+          for(let i=0;i<startId;i++){
+            val.target.parentElement.children[i].classList.add("star__active");
+          }
+      }
     return (
             isLoaded && 
             <div className="article">
@@ -58,9 +67,38 @@ function Article() {
                 }
             )}
             </div>
-            <div className="article__video">
-            <iframe width="720" height="405" src={article?.video} title="YouTube video player" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+            {
+                article?.video && 
+                <div className="article__video">
+                    <iframe width="720" height="405" src={article?.video} title="YouTube video player" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                </div>
+            }
+            <div className="article__rating">
+                <div className="article__rating__average">
+                    <span><strong>Average Rating : </strong>{article?.avgRating}</span>
+                </div>
+                <div className="rate__article">
+                    <span className="rate__article__head"><strong>Rate :</strong></span>
+                    <div class="stars">
+                        <div class="star" id="1" onClick={(e)=>{
+                            handleRate(e)
+                        }}></div>
+                        <div class="star" id="2" onClick={(e)=>{
+                            handleRate(e)
+                        }}></div>
+                        <div class="star" id="3" onClick={(e)=>{
+                            handleRate(e)
+                        }}></div>
+                        <div class="star" id="4" onClick={(e)=>{
+                            handleRate(e)
+                        }}></div>
+                        <div class="star" id="5" onClick={(e)=>{
+                            handleRate(e)
+                        }}></div>
+                    </div>
+                </div>
             </div>
+            
             </div>
     )
 }
