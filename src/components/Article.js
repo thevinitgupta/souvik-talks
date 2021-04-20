@@ -40,11 +40,19 @@ function Article() {
       }
 
       function handleRate(val){
-          const startId = parseInt(val.target.id);
-          setRate(startId);
-          for(let i=0;i<startId;i++){
-            val.target.parentElement.children[i].classList.add("star__active");
-          }
+        const starId = parseInt(val.target.id);
+        if(starId<rate){
+            for(let i=starId;i<rate;i++){
+                val.target.parentElement.children[i].classList.remove("star__active")
+            }
+            
+        }
+        else {
+            for(let i=rate;i<starId;i++){
+                val.target.parentElement.children[i].classList.add("star__active");
+            }
+        }
+        setRate(starId);
       }
     return (
             isLoaded && 

@@ -98,6 +98,11 @@
     width: 25px;
     margin: 0;
     margin-right: 5px;
+    transition: all 300ms ease-in-out;
+}
+.star:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 .star__active {
     background-color: gold;
