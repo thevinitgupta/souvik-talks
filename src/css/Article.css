@@ -107,3 +107,9 @@
 .star__active {
     background-color: gold;
 }
+
+.article__comments{
+    width: 95%;
+    min-height: 30vh;
+    margin: 0 auto;
+}

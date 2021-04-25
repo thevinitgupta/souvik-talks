@@ -11,6 +11,8 @@ function Article() {
     const [rate,setRate] = useState(0);
     const [avgRate,setAvgRate] = useState(0);
     const [voterNumber,setVoterNumber] = useState(0);
+    const [newComment,setNewComment] = useState("");
+    const [allComments,setAllComments] = useState([])
     const date = new Date(article?.time);
     let {id} = useParams();
     let {state} = useLocation();
@@ -47,6 +49,7 @@ function Article() {
                 setArticle(doc.data())
                 setIsLoaded(true);
                 setAvgRate(article?.avgRating);
+                setAllComments(article?.comments);
             }
         })
         .catch((error) => {
@@ -133,6 +136,22 @@ function Article() {
                 </div>
             </div>
             
+            <div className="article__comments">
+                <div className="article__comments__add">
+                    <form method="POST">
+                        <label for="newComment"></label>
+                        <input type="text" id="newComment" value={newComment} placeholder="add a comment" onChange={(e)=>{
+                            setNewComment(e.value);
+                        }}></input>
+                        <button type="submit" id="postComment">Post</button>
+                    </form>
+                </div>
+                <div className="article__comments__display">
+                        {article?.comments && article?.comments?.map((comment,index)=>{
+                            return <div>{comment}</div>;
+                        })}
+                </div>
+            </div>
             </div>
     )
 }
