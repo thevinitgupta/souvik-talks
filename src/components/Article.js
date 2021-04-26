@@ -155,10 +155,10 @@ function Article() {
                     </form>
                 </div>
                 <div className="article__comments__display">
-                        {article?.comments?.length>0 && 
+                        {article?.comments?.length>0 ? 
                         article.comments.map((comment,index)=>{
                             return <Comment key={index+1} commentObject={comment} />
-                        })
+                        }) : <div className="article__comments__empty">Start a new discussion...</div>
                         }
                 </div>
             </div>

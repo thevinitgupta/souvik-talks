@@ -155,3 +155,6 @@
 .article__comments__add >form>#postComment:active{
     transform: scale(0.8);
 }
+.article__comments__empty {
+    color: rgb(2, 170, 44);
+}
