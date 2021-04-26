@@ -138,7 +138,7 @@ function Article() {
             
             <div className="article__comments">
                 <div className="article__comments__add">
-                    <form method="POST" onClick={()=>{setFormFocused(true)}}>
+                    <form method="POST" onClick={()=>{setFormFocused(true)}} style={formFocused? {minHeight:"10vh"}: {}}>
                         <input type="text" id="newComment" value={newComment} placeholder="Your thoughts?" onChange={(e)=>{
                             setNewComment(e.target.value)
                         }}></input>
