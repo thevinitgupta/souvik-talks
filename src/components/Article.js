@@ -4,6 +4,7 @@ import firebase from "../config/firebase";
 import 'firebase/firestore';
 import parse from "html-react-parser";
 import "../css/Article.css"
+import Comment from './Comment';
 
 function Article() {
     const [article,setArticle] = useState([]);
@@ -12,7 +13,7 @@ function Article() {
     const [avgRate,setAvgRate] = useState(0);
     const [voterNumber,setVoterNumber] = useState(0);
     const [newComment,setNewComment] = useState("");
-    const [allComments,setAllComments] = useState([])
+    const [formFocused,setFormFocused] = useState(false);
     const date = new Date(article?.time);
     let {id} = useParams();
     let {state} = useLocation();
@@ -23,7 +24,7 @@ function Article() {
             setIsLoaded(true);
         }
         else {
-            getArticle()
+            getArticle();
         }
     },[])
 
@@ -48,8 +49,7 @@ function Article() {
                 console.log(doc.data())
                 setArticle(doc.data())
                 setIsLoaded(true);
-                setAvgRate(article?.avgRating);
-                setAllComments(article?.comments);
+                setAvgRate(doc.data()?.avgRating);
             }
         })
         .catch((error) => {
@@ -96,7 +96,7 @@ function Article() {
             {
                 article?.video && 
                 <div className="article__video">
-                    <iframe width="720" height="405" src={article?.video} title="YouTube video player" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                    <iframe width="720" height="405" src={article?.video} title="YouTube video player" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
                 </div>
             }
             <div className="article__rating">
@@ -105,29 +105,29 @@ function Article() {
                 </div>
                 <div className="rate__article">
                     <span className="rate__article__head"><strong>Rate :</strong></span>
-                    <div class="stars">
-                        <div class="star" id="1" onClick={(e)=>{
+                    <div className="stars">
+                        <div className="star" id="1" onClick={(e)=>{
                             handleRate(e);
                             setVoterNumber(voterNumber+1);
                             updateAvgRate();
                             
                         }}></div>
-                        <div class="star" id="2" onClick={(e)=>{
+                        <div className="star" id="2" onClick={(e)=>{
                             handleRate(e);
                             setVoterNumber(voterNumber+1);
                             updateAvgRate();
                         }}></div>
-                        <div class="star" id="3" onClick={(e)=>{
+                        <div className="star" id="3" onClick={(e)=>{
                             handleRate(e);
                             setVoterNumber(voterNumber+1);
                             updateAvgRate();
                         }}></div>
-                        <div class="star" id="4" onClick={(e)=>{
+                        <div className="star" id="4" onClick={(e)=>{
                             handleRate(e);
                             setVoterNumber(voterNumber+1);
                             updateAvgRate();
                         }}></div>
-                        <div class="star" id="5" onClick={(e)=>{
+                        <div className="star" id="5" onClick={(e)=>{
                             handleRate(e);
                             setVoterNumber(voterNumber+1);
                             updateAvgRate();
@@ -138,18 +138,28 @@ function Article() {
             
             <div className="article__comments">
                 <div className="article__comments__add">
-                    <form method="POST">
-                        <label for="newComment"></label>
-                        <input type="text" id="newComment" value={newComment} placeholder="add a comment" onChange={(e)=>{
-                            setNewComment(e.value);
+                    <form method="POST" onClick={()=>{setFormFocused(true)}}>
+                        <input type="text" id="newComment" value={newComment} placeholder="Your thoughts?" onChange={(e)=>{
+                            setNewComment(e.target.value)
                         }}></input>
-                        <button type="submit" id="postComment">Post</button>
+                        {
+                          formFocused &&  <button type="submit" id="postComment" onClick={(e)=>{
+                              e.preventDefault();
+                              console.log(newComment);
+                              
+                              setNewComment("")
+                              setFormFocused(false);
+                          }}>Post</button>
+                        }
+                        
                     </form>
                 </div>
                 <div className="article__comments__display">
-                        {article?.comments && article?.comments?.map((comment,index)=>{
-                            return <div>{comment}</div>;
-                        })}
+                        {article?.comments?.length>0 && 
+                        article.comments.map((comment,index)=>{
+                            return <Comment key={index+1} commentObject={comment} />
+                        })
+                        }
                 </div>
             </div>
             </div>
