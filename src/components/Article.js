@@ -13,11 +13,13 @@ function Article() {
     const [avgRate,setAvgRate] = useState(0);
     const [voterNumber,setVoterNumber] = useState(0);
     const [newComment,setNewComment] = useState("");
+    const [allComments,setAllComments] = useState([]);
     const [formFocused,setFormFocused] = useState(false);
     const date = new Date(article?.time);
     let {id} = useParams();
     let {state} = useLocation();
     const db = firebase.firestore();
+    const docRef = db.collection("Articles").doc(id);
     useEffect(()=>{
         if(state?.article){
             setArticle(state.article);
@@ -28,9 +30,13 @@ function Article() {
         }
     },[])
 
+    useEffect(()=>{
+        getComments();
+    },[])
+
     function updateAvgRate(){
         setAvgRate(rate)
-        db.collection("Articles").doc(id).update({
+        docRef.update({
             avgRating : avgRate,
             totalVoters : voterNumber
         }).then(()=>{
@@ -41,7 +47,7 @@ function Article() {
     }
     
       function getArticle(){
-          db.collection("Articles").doc(id)
+          docRef
           .get()
           .then((doc) => {
             if(doc.exists) {
@@ -63,7 +69,6 @@ function Article() {
             for(let i=starId;i<rate;i++){
                 val.target.parentElement.children[i].classList.remove("star__active")
             }
-            
         }
         else {
             for(let i=rate;i<starId;i++){
@@ -72,6 +77,40 @@ function Article() {
         }
         setRate(starId);
       }
+
+
+      //get live comments
+      function getComments(){
+        docRef.onSnapshot((dataSnapshot
+            )=>{
+                const comments = dataSnapshot.data().comments.sort((a,b)=> {
+                    let aTime = new Date(a.time).getTime();
+                    let bTime = new Date(b.time).getTime();
+                    return bTime-aTime;
+                })
+                setAllComments(comments);
+            })
+      }
+
+      function postComment(){
+          const comment = {
+              likes : 0,
+              time : new Date().getTime(),
+              value : newComment
+          }
+        docRef.update(
+            "comments" ,[...allComments,comment]
+        ).then(()=>{
+            console.log("updated");
+            setNewComment("");
+            setFormFocused(false);
+        }).catch((error)=>{
+            console.log("Error");
+            console.log(error);
+        })
+        
+      }
+
     return (
             isLoaded && 
             <div className="article">
@@ -146,17 +185,15 @@ function Article() {
                           formFocused &&  <button type="submit" id="postComment" onClick={(e)=>{
                               e.preventDefault();
                               console.log(newComment);
-                              
-                              setNewComment("")
-                              setFormFocused(false);
+                              postComment();
                           }}>Post</button>
                         }
                         
                     </form>
                 </div>
                 <div className="article__comments__display">
-                        {article?.comments?.length>0 ? 
-                        article.comments.map((comment,index)=>{
+                        {allComments.length>0 ? 
+                        allComments.map((comment,index)=>{
                             return <Comment key={index+1} commentObject={comment} />
                         }) : <div className="article__comments__empty">Start a new discussion...</div>
                         }
