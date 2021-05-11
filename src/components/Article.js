@@ -17,28 +17,34 @@ function Article() {
     const [formFocused,setFormFocused] = useState(false);
     const date = new Date(article?.time);
     let {id} = useParams();
-    let {state} = useLocation();
     const db = firebase.firestore();
     const docRef = db.collection("Articles").doc(id);
     useEffect(()=>{
-        if(state?.article){
-            setArticle(state.article);
-            setIsLoaded(true);
-        }
-        else {
             getArticle();
-        }
     },[])
 
-    useEffect(()=>{
-        getComments();
-    },[])
+    function getArticle(){
+        docRef.onSnapshot((dataSnapshot
+            )=>{
+                setArticle(dataSnapshot.data());
+                setIsLoaded(true);
+                const comments = dataSnapshot.data().comments.sort((a,b)=> {
+                    let aTime = new Date(a.time).getTime();
+                    let bTime = new Date(b.time).getTime();
+                    return bTime-aTime;
+                })
+                setAllComments(comments);
+                setAvgRate(dataSnapshot.data().avgRating);
+                console.log(dataSnapshot.data().avgRating);
+            });
+    }
 
-    function updateAvgRate(){
-        setAvgRate(rate)
+    function updateAvgRate(currRate){
+        console.log(avgRate,currRate,article.totalVoters)
+        article.totalVoters = article.totalVoters+1;
         docRef.update({
-            avgRating : avgRate,
-            totalVoters : voterNumber
+            avgRating : Math.round(((avgRate+currRate)/article.totalVoters + Number.EPSILON) * 10) / 10,
+            totalVoters : article.totalVoters
         }).then(()=>{
             console.log("Average Rating Upated successfully!")
         }).catch((error)=>{
@@ -46,25 +52,10 @@ function Article() {
         })
     }
     
-      function getArticle(){
-          docRef
-          .get()
-          .then((doc) => {
-            if(doc.exists) {
-            //      doc.data() is never undefined for query doc snapshots
-                console.log(doc.data())
-                setArticle(doc.data())
-                setIsLoaded(true);
-                setAvgRate(doc.data()?.avgRating);
-            }
-        })
-        .catch((error) => {
-          console.log("Error getting articles: ", error);
-      });
-      }
-
+      
       function handleRate(val){
         const starId = parseInt(val.target.id);
+        console.log(typeof starId,starId)
         if(starId<rate){
             for(let i=starId;i<rate;i++){
                 val.target.parentElement.children[i].classList.remove("star__active")
@@ -76,20 +67,7 @@ function Article() {
             }
         }
         setRate(starId);
-      }
-
-
-      //get live comments
-      function getComments(){
-        docRef.onSnapshot((dataSnapshot
-            )=>{
-                const comments = dataSnapshot.data().comments.sort((a,b)=> {
-                    let aTime = new Date(a.time).getTime();
-                    let bTime = new Date(b.time).getTime();
-                    return bTime-aTime;
-                })
-                setAllComments(comments);
-            })
+        updateAvgRate(starId);
       }
 
       function postComment(){
@@ -140,36 +118,25 @@ function Article() {
             }
             <div className="article__rating">
                 <div className="article__rating__average">
-                    <span><strong>Average Rating : </strong>{avgRate}</span>
+                    <span><strong>Average Rating : </strong>{article.avgRating}</span>
                 </div>
                 <div className="rate__article">
                     <span className="rate__article__head"><strong>Rate :</strong></span>
                     <div className="stars">
                         <div className="star" id="1" onClick={(e)=>{
-                            handleRate(e);
-                            setVoterNumber(voterNumber+1);
-                            updateAvgRate();
-                            
+                            handleRate(e);                            
                         }}></div>
                         <div className="star" id="2" onClick={(e)=>{
                             handleRate(e);
-                            setVoterNumber(voterNumber+1);
-                            updateAvgRate();
                         }}></div>
                         <div className="star" id="3" onClick={(e)=>{
                             handleRate(e);
-                            setVoterNumber(voterNumber+1);
-                            updateAvgRate();
                         }}></div>
                         <div className="star" id="4" onClick={(e)=>{
                             handleRate(e);
-                            setVoterNumber(voterNumber+1);
-                            updateAvgRate();
                         }}></div>
                         <div className="star" id="5" onClick={(e)=>{
                             handleRate(e);
-                            setVoterNumber(voterNumber+1);
-                            updateAvgRate();
                         }}></div>
                     </div>
                 </div>

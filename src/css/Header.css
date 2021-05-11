@@ -13,8 +13,14 @@
     margin: 15px 10px;
     display: flex;
 }
-.header__logo{
+
+.header__logo:hover{
     cursor: pointer;
+}
+.header__logo>img {
+    object-fit: contain;
+    height: 60px;
+    width: 60px;
 }
 
 .header__logo>div {
