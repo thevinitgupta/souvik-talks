@@ -1,7 +1,26 @@
-import React from 'react'
-import TextEditor from './TextEditor';
+import React, { useState } from 'react'
+import ReactQuill from 'react-quill';
+
+import 'react-quill/dist/quill.snow.css';
 
 function Post() {
+    const [value,setValue] = useState({
+        title : "",
+        imageUrl : "",
+        body : [],
+        comments : [],
+        creator : {},
+        tags : [],
+        totalVoters : 0,
+        video : "",
+        avgRating : 0
+    });
+    const [body, setBody] = useState('');
+
+    //function to divide the body into array of objects : {body : "",head : ""}
+    function formatBody(){
+
+    }
     return (
         <div className="post">
             <h2>New Article</h2>
@@ -14,9 +33,9 @@ function Post() {
                     <input type="submit" value="Upload Image" name="submit"/>
                 </div>
             </div>
-            <TextEditor/>
+            <ReactQuill theme="snow" value={body} onChange={setBody}/>
             <div className="post__submit">
-                <button type="submit">Post</button>
+                <button type="submit" onClick={()=>{console.log(body)}}>Post</button>
             </div>
         </div>
     )

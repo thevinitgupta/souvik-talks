@@ -1,56 +1,12 @@
 import React, { useState } from 'react'
-import { Editor } from 'react-draft-wysiwyg';
-import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import draftToHtml from 'draftjs-to-html';
+
 import "../css/TextEditor.css"
 
 function TextEditor() {
 
-    const [editorState,setEditorState] = useState();
-
-    function onEditorStateChange(){
-        console.log(document.getElementsByClassName("article__textarea"))
-        setEditorState(null)
-    }
-    function uploadImageCallBack(file) {
-        return new Promise(
-          (resolve, reject) => {
-            const xhr = new XMLHttpRequest(); // eslint-disable-line no-undef
-            xhr.open('POST', 'https://api.imgur.com/3/image');
-            xhr.setRequestHeader('Authorization', 'Client-ID 8d26ccd12712fca');
-            const data = new FormData(); // eslint-disable-line no-undef
-            data.append('image', file);
-            xhr.send(data);
-            xhr.addEventListener('load', () => {
-              const response = JSON.parse(xhr.responseText);
-              resolve(response);
-            });
-            xhr.addEventListener('error', () => {
-              const error = JSON.parse(xhr.responseText);
-              reject(error);
-            });
-          },
-        );
-      }
+   
 
     return (
-        <div className="editor">
-            <Editor wrapperClassName="editor__wrapper"
-  editorClassName="editor__input"
-  toolbarClassName="editor__options" onEditorStateChange={onEditorStateChange} toolbar={{
-        image: {
-          uploadCallback: uploadImageCallBack,
-          alt: { present: true, mandatory: false },
-        },
-      }}
-  />    
-     <textarea
-        readOnly
-        style={{display:'none'}}
-        className="article__textarea"
-        value={draftToHtml(editorState)}
-      />
-        </div>
         
     )
 }
