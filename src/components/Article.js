@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {useLocation, useParams, withRouter} from "react-router-dom"
+import {useParams, withRouter} from "react-router-dom"
 import firebase from "../config/firebase";
 import 'firebase/firestore';
 import parse from "html-react-parser";
@@ -11,7 +11,6 @@ function Article() {
     const [isLoaded,setIsLoaded] = useState(false);
     const [rate,setRate] = useState(0);
     const [avgRate,setAvgRate] = useState(0);
-    const [voterNumber,setVoterNumber] = useState(0);
     const [newComment,setNewComment] = useState("");
     const [allComments,setAllComments] = useState([]);
     const [formFocused,setFormFocused] = useState(false);
