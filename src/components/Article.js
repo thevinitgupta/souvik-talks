@@ -104,10 +104,9 @@ function Article() {
             
             </div>
             <div className="article__body">
-            {article?.body.length>0 && article?.body?.map(
-                (bodyVal,index) => {return parse(`<div>${bodyVal.head}${bodyVal.body}</div>`)
-                }
-            )}
+            {article?.body.length>0 &&  parse(`<div>${article.body}</div>`)
+                
+            }
             </div>
             {
                 article?.video && 
