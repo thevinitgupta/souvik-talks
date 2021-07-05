@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import React, { useState } from 'react'
 import ReactQuill from 'react-quill';
+import "../css/Post.css"
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -116,10 +117,10 @@ function Post() {
                 </div>
                 <div className="post__main__image">
                     <input  type="file" name="fileToUpload" id="fileToUpload" onChange={fileChangedHandler}/>
-                    <input type="submit" value="Upload Image" name="submit" onClick={handleImageUpload}/>
+                    <input type="submit" value="Upload Image" name="submit" id="image__upload__button" onClick={handleImageUpload}/>
                 </div>
             </div>
-            <ReactQuill theme="snow" value={value.body} onChange={(e)=>{handleBlog(e)}}/>
+            <ReactQuill theme="snow" value={value.body} onChange={(e)=>{handleBlog(e)}} className="post__content"/>
             <div className="post__submit">
                 <button type="submit" onClick={()=>{console.log(value);}}>Post</button>
             </div>
