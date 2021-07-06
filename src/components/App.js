@@ -1,6 +1,7 @@
 import Footer from './Footer';
 import Header from './Header';
 import Recent from './Recent';
+import Signup from './Signup';
 import Top from "./Top";
 import '../css/App.css';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
@@ -35,6 +36,9 @@ function App() {
           <Route path="/all-articles">
             <Articles/>
             <Footer/>
+          </Route>
+          <Route path="/signup">
+            <Signup/>
           </Route>
         </Switch>
       </Router>
