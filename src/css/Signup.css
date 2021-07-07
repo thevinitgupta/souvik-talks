@@ -1,0 +1,43 @@
+.signup__page{
+    width: 80%;
+    height: 70%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup__page__with__google {
+    width: 70%;
+    height: 40vh;
+    max-width: 350px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signup__page__with__google>span {
+    font-size: 17px;
+}
+.signup__page__with__google__btn{
+    margin: 0;
+    margin-top: 30px;
+    font-family: 'Poppins','Sans Serif';
+    width: 80%;
+    height: 60px;
+    background-color: lightgray;
+    border: none;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 200ms ease-in;
+}
+.signup__page__with__google__btn:hover {
+    cursor: pointer;
+    transform: scale(1.07);
+}
+.signup__page__with__google__btn>span {
+    font-size: 18px;
+}

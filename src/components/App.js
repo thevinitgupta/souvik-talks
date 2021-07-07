@@ -1,3 +1,4 @@
+import { AuthProvider } from "../context/userContext";
 import Footer from './Footer';
 import Header from './Header';
 import Recent from './Recent';
@@ -19,32 +20,32 @@ function App() {
   return (
     <div className="app">
       <div className="app__container">
-      <Router>
-        <Header scrollToContact={scrollToContact}/>
-        <Switch>
-          <Route path="/" exact>
-            <Top/>
-            <Recent/>
-            <Footer/>
-          </Route>
-          <Route path="/post">
-            <Post/>
-          </Route>
-          <Route path="/article/:id">
-            <Article/>
-          </Route>
-          <Route path="/all-articles">
-            <Articles/>
-            <Footer/>
-          </Route>
-          <Route path="/signup">
-            <Signup/>
-          </Route>
-        </Switch>
-      </Router>
-        
+      <AuthProvider>
+        <Router>
+          <Header scrollToContact={scrollToContact}/>
+          <Switch>
+            <Route path="/" exact>
+              <Top/>
+              <Recent/>
+              <Footer/>
+            </Route>
+            <Route path="/post">
+              <Post/>
+            </Route>
+            <Route path="/article/:id">
+              <Article/>
+            </Route>
+            <Route path="/all-articles">
+              <Articles/>
+              <Footer/>
+            </Route>
+            <Route path="/signup">
+              <Signup/>
+            </Route>
+          </Switch>
+        </Router>
+      </AuthProvider>        
       </div>
-      
     </div>
   );
 }
