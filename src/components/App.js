@@ -29,15 +29,16 @@ function App() {
               <Recent/>
               <Footer/>
             </Route>
-            <Route path="/post">
-              <Post/>
-            </Route>
+            
             <Route path="/article/:id">
               <Article/>
             </Route>
             <Route path="/all-articles">
               <Articles/>
               <Footer/>
+            </Route>
+            <Route path="/post">
+              <Post/>
             </Route>
             <Route path="/signup">
               <Signup/>

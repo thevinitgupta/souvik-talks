@@ -1,15 +1,18 @@
 import firebase from 'firebase';
-import React, { useContext, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import { AuthContext } from "../context/userContext";
+import { Redirect } from "react-router-dom";
 import "../css/Post.css"
 
 import 'react-quill/dist/quill.snow.css';
 
 function Post() {
+  const { user } = useContext(AuthContext);
     var storageRef = firebase.storage().ref();
     var db = firebase.firestore();
     const [title,setTitle]= useState("");
+    const [loggedIn,setLoggedIn] = useState(false);
     const [selectedFile,setSelectedFile] = useState(null);
     const [value,setValue] = useState({
         title : "",
@@ -24,8 +27,11 @@ function Post() {
         avgRating : 0
     });
 
-    const { user } = useContext(AuthContext);
-
+    useEffect(() => {
+      if(user){
+        setLoggedIn(true);
+      }
+    }, [user])
 
     function addTitle(e){
         setTitle(e.target.value);
@@ -33,11 +39,6 @@ function Post() {
            return {
                ...prevVal,
                title : e.target.value,
-               creator : {
-                 id : user.uid,
-                 name : user.displayName,
-                 image : user.photoURL
-               }
             }
         });
     }
@@ -129,14 +130,29 @@ function Post() {
       let time = new Date();
       time = time.toISOString();
       value.time = time;
+      
       console.log(user)
-      const newPostRef = await db.collection("Articles").doc();
-      const addPost = await newPostRef.set(value);
+      if(!user) {
+        console.log("cannot post if not logged in!")
+      }
+      else {
+        value.creator = {
+          id : user.uid,
+          name : user.displayName,
+          image : user.photoURL
+        }
+        const newPostRef = await db.collection("Articles").doc();
+        await newPostRef.set(value);
+      }
+      
         console.log(value);
     }
     return (
-        <div className="post">
-            <h2>New Article</h2>
+    <Fragment>
+      {
+        loggedIn ? (
+          <div className="post">
+              <h2>New Article</h2>
             <div className="post__main">
                 <div className="post__main__title">
                    <input type="text" className="main__title__input" placeholder="Title here" value={title} onChange={(e)=> addTitle(e)}/> 
@@ -150,7 +166,12 @@ function Post() {
             <div className="post__submit">
                 <button type="submit" onClick={handleArticleUpload}>Post</button>
             </div>
-        </div>
+      </div>
+        ) : 
+        <div>Please log in first!</div>
+      }
+    </Fragment>
+      
     )
 }
 
