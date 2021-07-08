@@ -1,17 +1,20 @@
 import firebase from 'firebase';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ReactQuill from 'react-quill';
+import { AuthContext } from "../context/userContext";
 import "../css/Post.css"
 
 import 'react-quill/dist/quill.snow.css';
 
 function Post() {
     var storageRef = firebase.storage().ref();
+    var db = firebase.firestore();
     const [title,setTitle]= useState("");
     const [selectedFile,setSelectedFile] = useState(null);
     const [value,setValue] = useState({
         title : "",
         imageUrl : "",
+        time: "",
         body : "",
         comments : [],
         creator : {},
@@ -21,13 +24,21 @@ function Post() {
         avgRating : 0
     });
 
+    const { user } = useContext(AuthContext);
+
+
     function addTitle(e){
         setTitle(e.target.value);
         setValue((prevVal)=> {
            return {
                ...prevVal,
-               title : e.target.value
-           }
+               title : e.target.value,
+               creator : {
+                 id : user.uid,
+                 name : user.displayName,
+                 image : user.photoURL
+               }
+            }
         });
     }
 
@@ -46,13 +57,17 @@ function Post() {
     //handle image upload
     function fileChangedHandler(event){
         setSelectedFile(event.target.files[0]);
+        console.log(event.target.files[0])
+        console.log(user);
     }
 
     function handleImageUpload(){
+        
         var metadata = {
-            contentType: 'image/jpeg'
+            contentType: selectedFile.type
           };
           
+          console.log(metadata);
           // Upload file and metadata to the object 'images/mountains.jpg'
           var uploadTask = storageRef.child('Feature Images/' + selectedFile.name).put(selectedFile, metadata);
           
@@ -78,6 +93,7 @@ function Post() {
               // https://firebase.google.com/docs/storage/web/handle-errors
               switch (error.code) {
                 case 'storage/unauthorized':
+                  console.log("User doesnt have access the object!")
                   // User doesn't have permission to access the object
                   break;
                 case 'storage/canceled':
@@ -108,6 +124,16 @@ function Post() {
             }
           );
     }
+
+    async function handleArticleUpload(){
+      let time = new Date();
+      time = time.toISOString();
+      value.time = time;
+      console.log(user)
+      const newPostRef = await db.collection("Articles").doc();
+      const addPost = await newPostRef.set(value);
+        console.log(value);
+    }
     return (
         <div className="post">
             <h2>New Article</h2>
@@ -122,7 +148,7 @@ function Post() {
             </div>
             <ReactQuill theme="snow" value={value.body} onChange={(e)=>{handleBlog(e)}} className="post__content"/>
             <div className="post__submit">
-                <button type="submit" onClick={()=>{console.log(value);}}>Post</button>
+                <button type="submit" onClick={handleArticleUpload}>Post</button>
             </div>
         </div>
     )
