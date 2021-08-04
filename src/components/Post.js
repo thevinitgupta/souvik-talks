@@ -145,7 +145,6 @@ function Post() {
         const newPostRef = await db.collection("Articles").doc();
         await newPostRef.set(value);
       }
-      
         console.log(value);
     }
 
