@@ -55,7 +55,7 @@ function Signup() {
     // var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    
+
     console.log(user);
     // ...
   }).catch((error) => {
@@ -85,6 +85,7 @@ function Signup() {
                 <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google icon" className="google__icon"/><span>Sign Up With Google</span> 
             </div>
           </div> 
+          
           )
           :
           //if not confirmed admin password
@@ -95,7 +96,10 @@ function Signup() {
                 <button type="button" onClick={handleAdminPassword}>Submit</button> 
             </div>
           </div>)
-          }  
+          } 
+          <div className="login__page__redirect">
+            <span>Already Signed Up as Admin? <a href="/login">Login </a></span>
+          </div> 
         </div>
     )
 }

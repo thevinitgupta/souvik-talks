@@ -9,6 +9,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import Post from './Post';
 import Articles from './Articles';
 import Article from './Article';
+import Login from "./Login";
 
 
 const scrollToContact = ()=> window.scrollTo({
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <Signup/>
+            </Route>
+            <Route path="/login">
+              <Login/>
             </Route>
           </Switch>
         </Router>
