@@ -8,11 +8,12 @@ import "../css/Post.css"
 import 'react-quill/dist/quill.snow.css';
 
 function Post() {
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext); 
     var storageRef = firebase.storage().ref();
     var db = firebase.firestore();
     const [title,setTitle]= useState("");
     const [loggedIn,setLoggedIn] = useState(false);
+    const [videoUrl,setVideoUrl] = useState("");
     const [selectedFile,setSelectedFile] = useState(null);
     const [value,setValue] = useState({
         title : "",
@@ -147,6 +148,20 @@ function Post() {
       
         console.log(value);
     }
+
+    //handle youtube video url
+    function handleVideoUrl(e){
+      console.log(e.target.value)
+      setVideoUrl(e.target.value);
+      //https://www.youtube.com/embed/ZBZ6BqoUDsU
+      //https://www.youtube.com/watch?v=ZBZ6BqoUDsU
+      setValue((prevVal)=> {
+        return {
+            ...prevVal,
+            video : `https://www.youtube.com/embed/${e.target.value.split("v=")[1]}`, 
+         }
+     });
+    }
     return (
     <Fragment>
       {
@@ -160,6 +175,10 @@ function Post() {
                 <div className="post__main__image">
                     <input  type="file" name="fileToUpload" id="fileToUpload" onChange={fileChangedHandler}/>
                     <input type="submit" value="Upload Image" name="submit" id="image__upload__button" onClick={handleImageUpload}/>
+                </div>
+                <div className="post__main__link">
+                  <label htmlFor="post__video__link">Linked Video : </label>
+                  <input type="text" className="post__video__link" value={videoUrl} onChange={handleVideoUrl} placeholder="https://youtube.com/myvideo"/>
                 </div>
             </div>
             <ReactQuill theme="snow" value={value.body} onChange={(e)=>{handleBlog(e)}} className="post__content"/>

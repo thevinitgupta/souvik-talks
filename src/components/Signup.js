@@ -7,7 +7,7 @@ import "../css/Signup.css"
 
 function Signup() {
 
-    const [isAdmin,setIsAdmin] = new useState(false);
+    const [isAdmin,setIsAdmin] = useState(false);
     const [adminPassword,setAdminPassword] = new useState("");
 
     //get the user state from the context
@@ -46,8 +46,8 @@ function Signup() {
 
     function handleGoogleSignIn(){
         firebase.auth()
-  .signInWithPopup(provider)
-  .then((result) => {
+        .signInWithPopup(provider)
+        .then((result) => {
     /** @type {firebase.auth.OAuthCredential} */
     //var credential = result.credential;
 
@@ -55,6 +55,7 @@ function Signup() {
     // var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
+    
     console.log(user);
     // ...
   }).catch((error) => {
@@ -76,7 +77,7 @@ function Signup() {
             <Redirect to={{ pathname: "/" }} />
             ) 
             : 
-            !isAdmin ? 
+            isAdmin ? 
           //if checked is admin, allow Google Signup
           (<div className="signup__page__with__google">
             <span>Sign Up as Admin:</span>
