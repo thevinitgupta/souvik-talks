@@ -64,3 +64,10 @@
 .youtube {
     margin-right: 5px;
 }
+
+@media screen and (max-width : 550px){
+   
+   .app__container{
+       width: 100vw;
+   }
+ }
