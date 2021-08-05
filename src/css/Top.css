@@ -8,12 +8,12 @@
    flex-wrap: wrap;
 }
 .top__left {
-   flex : 0.5;
+   flex : 0.7;
    height: 100%;
    min-width: 420px;
 }
 .top__left__mainHead{
-   font-size: 3rem;
+   font-size: 2.8rem;
    max-width: 80%;
    font-weight: 500;
    color: #0a043c;
@@ -46,7 +46,7 @@
 }
 .top__right {
    flex: 0.5;
-   height: 100%;
+   height: 90%;
    object-fit: contain;
    display: flex;
    justify-content: flex-start;
@@ -72,4 +72,109 @@
    height: 70%;
    text-decoration: none;
    color: #fff;
+}
+
+/*Reponsive Screens*/
+
+/*Small Laptop*/
+@media screen and (max-width : 1250px){
+   .top__left__mainHead{
+      font-size: 2.5rem;
+   }
+}
+
+@media screen and (max-width : 1075px){
+   .top__left__mainHead{
+      font-size: 2.2rem;
+      max-width: 80%;
+   }
+}
+@media screen and (max-width : 975px){
+   .top__left__mainHead{
+      font-size: 2rem;
+      max-width: 80%;
+   }
+}
+
+@media screen and (max-width : 920px){
+   .top {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 80vh;
+   }
+   .top__left{
+      width: 100%;
+      flex: 0.2;
+   }
+   .top__left__mainHead{
+      margin-top: 3rem;
+      font-size: 2.4rem;
+      max-width: 60%;
+   }
+   .top__left__subHead{
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+      color: #5c5c5c;
+   }
+   .top__cta {
+      position: relative;
+      z-index: 5;
+      margin:  0;
+      margin-top: 30px;
+   }
+   .top__right {
+      width: 100%;
+      flex: 0.5;
+      object-fit: contain;
+      min-width: none;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+   }
+   .top__right__image {
+      position: absolute;
+      z-index: 0;
+      height: 20rem;
+      top: -12rem;
+      transition: transform 10s ease-in-out;
+   }
+}
+
+/*Tab screens*/
+@media screen and (max-width : 700px){
+   .top__left__mainHead{
+      max-width: 80%;
+   }
+   .top__right{
+      display: none;
+   }
+}
+
+@media screen and (max-width : 600px){
+   .top__left__mainHead{
+      max-width: 90%;
+   }
+}
+
+/*Mobile Screens*/
+@media screen and (max-width : 550px){
+   
+   .top__left__mainHead{
+      max-width: 100%;
+   }
+}
+
+@media screen and (max-width : 460px){
+   .top {
+      width: 90%;
+      height: 40vh;
+      justify-content: flex-start;
+      margin-bottom: 80px;
+   }
+   .top__left__mainHead{
+      max-width: 100%;
+      font-size: 2.1rem;
+   }
 }

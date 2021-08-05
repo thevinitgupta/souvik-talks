@@ -6,28 +6,9 @@ import React, { useEffect, useState } from 'react'
 import firebase from "../config/firebase";
 import 'firebase/firestore';
 import ArticleCard from "./ArticleCard";
-
 import "../css/Recent.css"
 import {Link} from "react-router-dom";
 
-// let articles = [
-//     {
-//         "title" : "The Goliath in Tech is here",
-//         "img" : articleImage2
-//     },
-//     {
-//         "title" : "The Goliath in Tech is here",
-//         "img" : articleImage3
-//     },
-//     {
-//         "title" : "The Goliath in Tech is here",
-//         "img" : articleImage4
-//     }
-// ]
-// let recentArticle = {
-//     "title" : "The Goliath in Tech is here",
-//     "img" : articleImage1
-// }
 function Recent({recent}) {
     const [articles,setArticles] = useState([]);
    useEffect(() => {
@@ -57,7 +38,6 @@ function Recent({recent}) {
   }, [])
     return (
         <div className="recent">
-            {articles && console.log(articles)}
             <div className="recent__head">
                 Recent Articles
             </div>

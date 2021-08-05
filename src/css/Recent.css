@@ -42,7 +42,7 @@
     align-items: center;
 }
 .allBlogs {
-    margin: 5px;
+    margin: 30px;
     font-size: 1.9rem;
     color: #2b2e4a;
     text-decoration: none;
@@ -62,4 +62,96 @@ a.allBlogs:before {
 a.allBlogs:hover:before {
     visibility: visible;
     width: 100%;
+}
+
+/*Responsive Screens*/
+
+/*Small Laptop*/
+@media screen and (max-width : 1000px){
+    .recent__articles{
+        justify-content: space-evenly;
+    }
+    .recent__latest{
+        flex: 0.6;
+    }
   }
+ 
+
+  @media screen and (max-width : 900px){
+    .recent {
+        display: flex;
+        flex-direction: column;
+        height:fit-content;
+    }
+   .recent__articles {
+       width: 100%;
+       margin: 10px auto;
+       flex-direction: column;
+   }
+   .recent__latest {
+    flex: 0.45;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    }
+    .recent__others{
+        flex: 0.45;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        border-bottom: 1px solid gray;
+    }
+    .recent__latest__link{
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        text-align: center;
+    }
+    .recent__others__link{
+        width: 30%;
+        height: 100%;
+        border: none;
+        text-align: center;
+    }
+ }
+
+/*Tab Screens*/
+@media screen and (max-width : 750px){
+    .recent {
+        display: flex;
+        flex-direction: column;
+        height:fit-content;
+    }
+   .recent__articles {
+       width: 80%;
+       margin: 10px auto;
+       flex-direction: column;
+   }
+   .recent__latest {
+    flex: 0.25;
+    width: 80vw;
+    border: none;
+    border-bottom: 1px solid gray;
+    }
+    .recent__others{
+        flex: 0.7;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .recent__others__link,.recent__latest__link{
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid gray;
+        text-align: center;
+    }
+ }

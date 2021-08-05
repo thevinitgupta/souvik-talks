@@ -8,8 +8,8 @@ function Contact() {
             <form action="#" className="contact__form">
                 <input type="text" placeholder="Your Name" id="name" autoComplete="false"></input>
                 <input type="email" placeholder="Email Id" id="email" autoComplete="false"></input>
-                <textarea au="true" placeholder="Your Message" id="message" autoComplete="false" rows="5" cols="50"></textarea>
-                <button type="submit" id="send">Send<SendIcon/> </button>
+                <textarea au="true" placeholder="Your Message" id="message" autoComplete="false" rows="6" cols="50"></textarea>
+                <button type="submit" id="send"><span>Send</span><SendIcon/> </button>
             </form>
         </div>
     )
