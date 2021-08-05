@@ -10,7 +10,7 @@ function Footer() {
         <div id="contactForm" className="footer">
             <div className="footer__left">
                 <div className="footer__left__head"><span>Let's talk</span>
-                <p>Ask us anything or just say hi...</p></div>
+                <p >Ask us anything or just say hi...</p></div>
                 <div className ="footer__left__social">
                 <a href="https://www.facebook.com/souvik.mondal.75098" target="_blank" rel="noopener noreferrer"><FacebookIcon  fontSize="large" className="social__icon facebook"/></a>
                 <a href="https://www.instagram.com/souvik.7585/?fbclid=IwAR0HTDdzyVawK-dtGvtjGR-pn7N1TTPNlqCHBVLaZkt8KfBd5_2GgbeUono" target="_blank" rel="noopener noreferrer"><InstagramIcon fontSize="large" className="social__icon instagram"/></a>
