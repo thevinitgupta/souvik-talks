@@ -36,6 +36,7 @@
 }
 #message {
     font-size: 1.2rem;
+    resize: both;
 }
 #send {
     align-self: flex-start;
@@ -64,6 +65,13 @@
 }
 #send:active{
     transform: translateX(10px);
+}
+
+/*Small Screens*/
+@media screen and (max-width : 500px) {
+    #message {
+        resize: none;
+    }
 }
 
 
