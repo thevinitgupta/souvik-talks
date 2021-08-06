@@ -1,6 +1,6 @@
 .social {
-    margin-left: 40%;
-    width: 60%;
+    
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -27,4 +27,18 @@
 }
 .youtube>a:hover{
     color: #cd201f;
+}
+
+/*Drop Down For Mobile*/
+@media screen and (max-width:580px) {
+    .social {
+        flex:0.8;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .social__link>a {
+        font-size: 2.3rem;
+    }
 }
