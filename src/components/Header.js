@@ -24,20 +24,20 @@ function Header({scrollToContact}) {
     }
     return (
         <div className="header">
-          <div className="header__logo" onClick={()=> window.location.href="/"}>
-              <img src={SouvikTalkLogo} alt="header logo" />
-              <div>Souvik Talks</div>
-          </div>
-          <div className="header__links">
-              <Social />
-          </div>
-          <div className="header__cta" >
-                { loggedIn? 
+            <div className="header__logo" onClick={()=> window.location.href="/"}>
+                <img src={SouvikTalkLogo} alt="header logo" />
+                <div>Souvik Talks</div>
+            </div>
+            <div className="header__links">
+                <Social />
+            </div>
+            <div className="header__cta" >
+                  { loggedIn? 
                     <button className="cta signout__button" onClick={handleSignOut}>Sign Out</button>
-                :
+                  :
                     <button className="contact_us" onClick={scrollToContact}>Contact Us</button>
-                }
-          </div>
+                  }
+            </div>
         </div>
     )
 }
