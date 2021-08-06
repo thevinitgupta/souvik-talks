@@ -1,0 +1,24 @@
+
+
+.hamburgerMenu__dropdown {
+    position: absolute;
+    top: 65px;
+    left: -13px;
+    display: flex;
+    flex-direction: column;
+    height: 88vh;
+    width: 100vw;
+    margin: 0 auto;
+    z-index: 20;
+    background-color: #fff;
+}
+.hamburgerMenu__cta {
+    flex: 0.2;
+    width: 50%;
+    margin: 0 auto;
+}
+.hamburgerMenu__cta>button, .hamburgerMenu__cta>.signout__button{
+    margin: 30px auto !important;
+    padding: 10px 15px;
+    width: 90% !important;
+}

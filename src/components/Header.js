@@ -4,10 +4,13 @@ import SouvikTalkLogo from "../images/souviktalks.png";
 import firebase from "../config/firebase";
 import "../css/Header.css";
 import { AuthContext } from '../context/userContext';
+import useWindowSize from "../hooks/useWindowSize"
+import HamburgerMenu from './HamburgerMenu';
 
 
 function Header({scrollToContact}) {
     const {user} = useContext(AuthContext);
+    const [windowWidth] = useWindowSize();
     const [loggedIn,setLoggedIn] = useState(false);
     useEffect(() => {
         if(user) setLoggedIn(true);
@@ -28,16 +31,30 @@ function Header({scrollToContact}) {
                 <img src={SouvikTalkLogo} alt="header logo" />
                 <div>Souvik Talks</div>
             </div>
-            <div className="header__links">
+
+            {/**For Mobile Screens */}
+            {
+                windowWidth<580 && <HamburgerMenu scrollToContact={scrollToContact}/>
+            }
+
+            {/**For Tabs and Laptops */}
+            {
+                windowWidth>580 && 
+                <div className="header__links">
                 <Social />
-            </div>
-            <div className="header__cta" >
+                </div>
+            }
+            {
+                windowWidth>580 && 
+                <div className="header__cta" >
                   { loggedIn? 
                     <button className="cta signout__button" onClick={handleSignOut}>Sign Out</button>
                   :
                     <button className="contact_us" onClick={scrollToContact}>Contact Us</button>
                   }
             </div>
+            }
+            
         </div>
     )
 }
