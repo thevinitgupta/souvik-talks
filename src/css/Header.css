@@ -85,5 +85,11 @@
     .header {
         position: relative;
     }
-    
+    .header__logo>div {
+        font-size: 1.4rem;
+    }
+    .header__logo>img {
+        height: 45px;
+        width: 45px;
+    }
 }
