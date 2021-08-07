@@ -1,5 +1,5 @@
 .storyCard{
-    width: 65%;
+    width: 55%;
     height: 65vh;
     border: 1px solid grey;
     margin: 10px auto;
@@ -61,8 +61,16 @@
     overflow-wrap: anywhere;
     word-break: break-word; 
 }
-
+.storyCard__body__title:hover {
+    color: rgb(50, 62, 190);
+}
 /*Adaptive*/
+/*Medium Laptops*/
+@media screen and (max-width:1200px) {
+    .storyCard{
+        width: 60%;
+    }
+}
 /*Small Laptops*/
 @media screen and (max-width: 950px){
     .storyCard{

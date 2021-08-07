@@ -4,7 +4,7 @@ import SouvikTalkLogo from "../images/souviktalks.png";
 
 function StoryCard({article}) {
 
-    console.log(article?.data?.creator?.image)
+    console.log(article)
     return (
         <div className="storyCard">
             <div className="storyCard__image">
@@ -22,7 +22,7 @@ function StoryCard({article}) {
                         {article?.data?.creator?.name || "Admin"}
                     </div>
                 </div>
-                <div className="storyCard__body__title">
+                <div className="storyCard__body__title" >
                     {article?.data?.title.substr(0,59) }
                 </div>
             </div>
