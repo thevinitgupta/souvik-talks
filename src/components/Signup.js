@@ -3,7 +3,9 @@ import firebase from "../config/firebase";
 import { AuthContext } from "../context/userContext";
 import { Redirect } from "react-router-dom";
 import 'firebase/firestore';
-import "../css/Signup.css"
+import "../css/Signup.css";
+import Blogging from "../images/blogging.png"
+import Security from "../images/security.png"
 
 function Signup() {
 
@@ -80,7 +82,7 @@ function Signup() {
             isAdmin ? 
           //if checked is admin, allow Google Signup
           (<div className="signup__page__with__google">
-            <span>Sign Up as Admin:</span>
+            <span className="signup__page__with__google__head">Sign Up as Admin:</span>
             <div className="signup__page__with__google__btn" onClick={handleGoogleSignIn}>
                 <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google icon" className="google__icon"/><span>Sign Up With Google</span> 
             </div>
@@ -90,8 +92,12 @@ function Signup() {
           :
           //if not confirmed admin password
           (<div className="signup__page__admin">
+            <div className="check__admin__img">
+                <img src={Security} alt="security"/>
+              </div>
             <div className="check__admin__form">
-                <label htmlFor="admin__password" name="admin__label">Enter Admin Password :</label>
+              
+                <label htmlFor="admin__password" name="admin__label">Enter Admin Password</label>
                 <input id="admin__password" value={adminPassword} type="password" placeholder="admin password" onChange={handleAdminPasswordChange}></input>
                 <button type="button" onClick={handleAdminPassword}>Submit</button> 
             </div>
