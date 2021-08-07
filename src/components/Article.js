@@ -25,6 +25,10 @@ function Article() {
     function getArticle(){
         docRef.onSnapshot((dataSnapshot
             )=>{
+                /**
+                 * !This document doesn't exist. Check doc.exists to make sure the document exists before calling doc.data(). 
+                 * */
+                
                 setArticle(dataSnapshot.data());
                 setIsLoaded(true);
                 const comments = dataSnapshot.data().comments.sort((a,b)=> {

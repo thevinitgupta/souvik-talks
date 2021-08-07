@@ -1,0 +1,106 @@
+.notFound {
+    width: 90vw;
+    height: 83vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.notFound__top{
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notFound__image{
+    height: 70vh;
+    width: 40vw;
+}
+.notFound__bottom{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.notFound__bottom__head{
+    height: fit-content;
+    font-size: 8rem;
+    color : #da5151;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: all 600ms ease-in-out;
+    display: flex;
+}
+
+.notFound__bottom__head:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.notFound__bottom__head__num {
+    margin-right: 1.2rem;
+}
+
+/*404 animation*/
+.one {
+    animation: shake-up 1s ease-in-out forwards infinite alternate;
+}
+.two {
+    animation: shake-up 1s ease-in-out forwards infinite alternate;
+    animation-delay: 0.4s;
+}
+.three {
+    animation: shake-up 1s ease-in-out forwards infinite alternate;
+    animation-delay: 0.8s;
+}
+
+
+@keyframes shake-up {
+    0%{
+        transform: translateY(0);
+    }
+    
+    100%{
+        transform: translateY(-60px);
+    }
+}
+
+.notFound__bottom__subHead{
+    font-size: 1.4rem;
+}
+.notFound__bottom__subHead > p > span{
+    font-weight: 600;
+    color: #da5151;
+    margin-left: 5px;
+}
+
+.notFound__bottom__link {
+    background-color: #2b2e4a;
+    color: #fff;
+    font-family: 'Ubuntu',sans-serif;
+    padding: 10px;
+    font-size: 1.4rem;
+    transition: all 150ms ease-in-out;
+}
+.notFound__bottom__link:hover{
+    cursor: pointer;
+    transform: scale(0.8);
+    border: none;
+    border-radius: 10px;
+}
+/*Adaptive*/
+/*Tab Screens*/
+@media screen and (max-width: 900px) {
+    .notFound__image{
+        width: 50vw;
+        height: 60vh;
+    }
+}
+@media screen and (max-width: 800px) {
+    .notFound{
+        flex-direction: column;
+    }
+}

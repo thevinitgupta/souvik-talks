@@ -10,6 +10,7 @@ import Post from './Post';
 import Articles from './Articles';
 import Article from './Article';
 import Login from "./Login";
+import NotFound from "./NotFound";
 
 
 const scrollToContact = ()=> window.scrollTo({
@@ -47,6 +48,7 @@ function App() {
             <Route path="/login">
               <Login/>
             </Route>
+            <Route component={NotFound} />
           </Switch>
         </Router>
       </AuthProvider>        
