@@ -53,8 +53,8 @@
    min-width: 360px;
 }
 .top__right__image {
-   height: 70%;
-   width: 70%;
+   height: 100%;
+   width: 90%;
    transition: transform 10s ease-in-out;
 }
 .top__right__image:hover{
@@ -136,7 +136,8 @@
    .top__right__image {
       position: absolute;
       z-index: 0;
-      height: 20rem;
+      height: 25rem;
+      width: 28rem;
       top: -12rem;
       transition: transform 10s ease-in-out;
    }

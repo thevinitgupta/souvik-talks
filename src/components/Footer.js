@@ -18,7 +18,7 @@ function Footer() {
                 </div>
                 
                 <div className="credits">
-                    Header Image from 
+                    Images from 
                     <a href="https://www.freepik.com/vectors/people">www.freepik.com</a>
                 </div>  
                 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Reading from "../images/reading.svg";
+import Reading from "../images/reading.gif";
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import "../css/Top.css"
 
