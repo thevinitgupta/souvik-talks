@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import firebase from "../config/firebase";
 import 'firebase/firestore';
-import { Link } from 'react-router-dom';
 import "../css/Articles.css"
+import StoryCard from './StoryCard';
+import {Link} from "react-router-dom";
 
 function Articles() {
     const [articles,setArticles] = useState([]);
@@ -37,19 +38,12 @@ function Articles() {
             <div className="articles__container">
             <span className="articles__container__head">All Articles</span>
               {articles.map((article,index)=>
-                (<Link to={{
-                    pathname :`/article/${article?.id}`,
-                    state : {article:article?.data}
-                    }} 
+                (<Link to={`/article/${article?.id}`} 
                    key={index+1} className="articles__container__link">
-                      <div className="articles__container__link__image">
-                        {article?.data?.imageUrl && <img src={article.data.imageUrl} alt="article"/>}
-                      </div>
-                      <div className="articles__container__link__text">
-                        <span>{article?.data?.title}</span>
-                      </div>
-                 </Link>)
-              )}
+                      <StoryCard key={index+1} article={article}/>
+                 </Link> ) 
+                )
+              }
             </div>
         </div>
     )

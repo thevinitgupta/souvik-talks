@@ -14,15 +14,15 @@
     margin-bottom: 20px;
 }
 .articles__container__link{
-    
-    height: 20vh;
-    width: 70%;
-    padding: 20px 0;
-    border-bottom: 1px solid grey;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 80%;
+    text-decoration: inherit;
+    color: inherit;
 }
+.articles__container__link:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .articles__container__link__image{
     height: 85%;
     flex: 0.25;

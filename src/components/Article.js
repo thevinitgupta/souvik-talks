@@ -33,7 +33,7 @@ function Article() {
                  if(dataSnapshot.exists){
                     setArticle(dataSnapshot.data());
                     setIsLoaded(true);
-                const comments = dataSnapshot.data().comments.sort((a,b)=> {
+                const comments = dataSnapshot?.data().comments.sort((a,b)=> {
                     let aTime = new Date(a.time).getTime();
                     let bTime = new Date(b.time).getTime();
                     return bTime-aTime;
@@ -117,7 +117,7 @@ function Article() {
             
             </div>
             <div className="article__body">
-            {article?.body.length>0 &&  parse(`<div>${article.body}</div>`)
+            {article?.body?.length>0 &&  parse(`<div>${article.body}</div>`)
                 
             }
             </div>
