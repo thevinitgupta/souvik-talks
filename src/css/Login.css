@@ -1,6 +1,6 @@
 .login__page{
     width: 80%;
-    height: 70%;
+    height: 85%;
     margin: 50px auto;
     display: flex;
     flex-direction: column;
@@ -8,9 +8,10 @@
     align-items: center;
 
 }
+
 .login__page__with__google {
     width: 70%;
-    height: 40vh;
+    height: 60vh;
     max-width: 350px;
     border: 1px solid gray;
     border-radius: 5px;
@@ -19,6 +20,18 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+}
+.login__page__image {
+    width: 90%;
+    flex: 0.4;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login__page__image>img{
+    width: 90%;
+    height: 90%;
 }
 .login__page__with__google>span {
     font-size: 17px;
@@ -43,4 +56,17 @@
 }
 .login__page__with__google__btn>span {
     font-size: 18px;
+}
+
+@media screen and (max-width:520px) {
+    .login__page__with__google {
+        width: 95%;
+       
+    }
+    .login__page__with__google__btn {
+        width: 90%;
+    }
+    .login__page__with__google__btn>span {
+        font-size: 16px;
+    }
 }
