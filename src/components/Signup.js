@@ -82,6 +82,9 @@ function Signup() {
             isAdmin ? 
           //if checked is admin, allow Google Signup
           (<div className="signup__page__with__google">
+          <div className="check__admin__img">
+                <img src={Blogging} alt="security"/>
+              </div>
             <span className="signup__page__with__google__head">Sign Up as Admin:</span>
             <div className="signup__page__with__google__btn" onClick={handleGoogleSignIn}>
                 <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google icon" className="google__icon"/><span>Sign Up With Google</span> 
