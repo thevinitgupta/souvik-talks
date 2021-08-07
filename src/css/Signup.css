@@ -1,14 +1,15 @@
 .signup__page{
     width: 80%;
-    height: 70%;
+    height: 85%;
     margin: 50px auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .signup__page__with__google {
     width: 70%;
-    height: 40vh;
+    height: 60vh;
     max-width: 350px;
     border: 1px solid gray;
     border-radius: 5px;
@@ -40,4 +41,97 @@
 }
 .signup__page__with__google__btn>span {
     font-size: 18px;
+}
+.signup__page__admin{
+    height: 50vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.check__admin__img{
+    flex: 0.3;
+    width: 60%;
+    object-fit: contain;
+}
+.check__admin__img>img{
+    width: 100%;
+    height: 80%;
+}
+.check__admin__form{
+    flex: 0.6;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.check__admin__form > label{
+    font-size: 1.5rem;
+    color: #2b2e4a;
+    margin-bottom: 10px;
+}
+#admin__password{
+    height: 2rem;
+    padding: 3px;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.check__admin__form > button{
+    font-size: 1.2rem;
+    background-color: #2b2e4a;
+    color: #fff;
+    padding: 5px 2px;
+    margin-bottom: 10px;
+}
+.check__admin__form >button:hover{
+   cursor:pointer;
+}
+.login__page__redirect{
+    margin-top: 80px;
+}
+
+@media screen and (max-width: 650px) {
+    .check__admin__img{
+        flex: 0.3;
+        width: 60%;
+        object-fit: contain;
+    }
+    .check__admin__img>img{
+        width: 100%;
+        height: 100%;
+    }
+    .signup__page__with__google {
+        width:85%;
+        height: 50vh;
+    }
+    .signup__page__with__google>span {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .check__admin__img{
+        flex: 0.3;
+        width: 60%;
+        object-fit: contain;
+    }
+    .check__admin__img>img{
+        width: 100%;
+        height: 100%;
+    }
+    .signup__page__with__google {
+        width:95%;
+        height: 50vh;
+    }
+    .signup__page__with__google__head{
+        font-size: 1.4rem;
+    }
+    .signup__page__with__google>span {
+        font-size: 14px;
+    }
+    .signup__page__with__google__btn{
+        width: 90%;
+    }
 }
