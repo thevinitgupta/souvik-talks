@@ -32,7 +32,7 @@ function Article() {
                  * */
                  if(dataSnapshot.exists){
                     setArticle(dataSnapshot.data());
-                setIsLoaded(true);
+                    setIsLoaded(true);
                 const comments = dataSnapshot.data().comments.sort((a,b)=> {
                     let aTime = new Date(a.time).getTime();
                     let bTime = new Date(b.time).getTime();
@@ -101,7 +101,8 @@ function Article() {
       }
 
     return (
-            !notFound && isLoaded ?  
+            !notFound ?
+            isLoaded &&  
             <div className="article">
             <div className="article__main">
             <div className="article__main__image">
