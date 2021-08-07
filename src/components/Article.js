@@ -5,10 +5,12 @@ import 'firebase/firestore';
 import parse from "html-react-parser";
 import "../css/Article.css"
 import Comment from './Comment';
+import NotFound from './NotFound';
 
 function Article() {
     const [article,setArticle] = useState([]);
     const [isLoaded,setIsLoaded] = useState(false);
+    const [notFound,setNotFound] = useState(false);
     const [rate,setRate] = useState(0);
     const [avgRate,setAvgRate] = useState(0);
     const [newComment,setNewComment] = useState("");
@@ -28,8 +30,8 @@ function Article() {
                 /**
                  * !This document doesn't exist. Check doc.exists to make sure the document exists before calling doc.data(). 
                  * */
-                
-                setArticle(dataSnapshot.data());
+                 if(dataSnapshot.exists){
+                    setArticle(dataSnapshot.data());
                 setIsLoaded(true);
                 const comments = dataSnapshot.data().comments.sort((a,b)=> {
                     let aTime = new Date(a.time).getTime();
@@ -39,6 +41,12 @@ function Article() {
                 setAllComments(comments);
                 setAvgRate(dataSnapshot.data().avgRating);
                 console.log(dataSnapshot.data().avgRating);
+                 }
+                 else {
+                     setNotFound(true);
+                     console.log("Doc does not exist!")
+                 }
+                
             });
     }
 
@@ -93,7 +101,7 @@ function Article() {
       }
 
     return (
-            isLoaded && 
+            !notFound && isLoaded ?  
             <div className="article">
             <div className="article__main">
             <div className="article__main__image">
@@ -169,6 +177,8 @@ function Article() {
                 </div>
             </div>
             </div>
+    :
+        <NotFound/>
     )
 }
 
