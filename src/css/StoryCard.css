@@ -116,8 +116,42 @@
         width: 100%;
         height: 40%;
         max-width: 300px;
+        padding: 1.5rem 2rem;
     }
     .storyCard__body__title{
         font-size: 1.3rem;
+    }
+}
+@media screen and (max-width: 370px){
+    .storyCard__body{
+        width: 100%;
+        height: 40%;
+        max-width: 260px;
+        padding: 1.2rem 1.5rem;
+    }
+    .storyCard__body__title{
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 320px){
+    .storyCard__body{
+        width: 100%;
+        height: 50%;
+        max-width: 220px;
+        padding: 1rem 1.2rem;
+    }
+    .storyCard__body__title{
+        font-size: 1.05rem;
+    }
+}
+@media screen and (max-width: 250px){
+    .storyCard__body{
+        width: 100%;
+        height: 50%;
+        max-width: 200px;
+        padding: 0.8rem 1rem;
+    }
+    .storyCard__body__title{
+        font-size: 1rem;
     }
 }
