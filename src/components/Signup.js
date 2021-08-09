@@ -58,7 +58,7 @@ function Signup() {
     // The signed-in user info.
     var user = result.user;
 
-    console.log(user);
+    window.location = "/";
     // ...
   }).catch((error) => {
     // Handle Errors here.

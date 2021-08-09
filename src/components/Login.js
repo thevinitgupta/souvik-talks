@@ -31,7 +31,11 @@ export default function Login() {
       })
      });
   }
-  console.log("is new user :", result.additionalUserInfo.isNewUser)
+  else {
+    console.log("is new user :", result.additionalUserInfo.isNewUser)
+    window.location = "/";
+  }
+  
   // ...
 }).catch((error) => {
   // Handle Errors here.
