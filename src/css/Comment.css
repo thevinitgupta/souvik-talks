@@ -1,6 +1,6 @@
 .comment {
     width: 70%;
-    max-width: 60vw;
+    max-width: 80vw;
     min-height: 60px;
     padding: 10px 0;
     display: flex;
@@ -19,4 +19,42 @@
     color: gray;
     font-size: 0.8rem;
     margin-left: 30px;
+}
+
+/*Adaptive*/
+@media screen and (max-width:800px) {
+    .comment{
+        width: 80%;
+    }
+}
+@media screen and (max-width:650px) {
+    .comment{
+        width: 85%;
+        max-width: 90vw;
+    }
+    .comment__body{
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width:550px) {
+    .comment{
+        width: 90%;
+        max-width: 100vw;
+    }
+    .comment__body{
+        font-size: 1.1rem;
+    }
+    .comment__time{
+        font-size: 0.6rem;
+    }
+}
+@media screen and (max-width:450px) {
+    .comment{
+        width: 95%;
+    }
+}
+@media screen and (max-width:350px) {
+    .comment{
+        width: 100%;
+    }
 }
