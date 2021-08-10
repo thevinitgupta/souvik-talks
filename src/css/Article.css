@@ -1,6 +1,5 @@
 .article {
     width: 95%;
-    height:200vh;
     min-height: 500px;
     margin: 20px auto;
     font-family: "Poppins",sans-serif;
@@ -54,11 +53,17 @@
 
 .article__video {
     width: 90%;
+    height: 70vh;
     margin: 20px auto;
     margin-top: 40px;
+    object-fit: contain;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#youtube__video {
+    width: 75%;
+    height: 90%;
 }
 .article__rating {
     height: 15vh;
@@ -157,4 +162,129 @@
 }
 .article__comments__empty {
     color: rgb(2, 170, 44);
+}
+
+/*Adaptive Screens*/
+
+/*Small Laptops*/
+@media screen and (max-width:1024px) {
+    .article__main {
+        height: 85vh;
+        width: 90%;
+        margin: 0 auto;
+        justify-content: space-evenly;
+    }
+    .article__main__image {
+        flex: 0.75;
+        object-fit:cover;
+    }
+    .article__main__image>img{
+        width: 100%;
+        height: 100%;
+    }
+    .article__body {
+        font-size: 18px;
+    }
+    #youtube__video {
+        width: 95%;
+        height: 90%;
+    }
+}
+@media screen and (max-width:900px) {
+    .article__comments__add{
+        min-height: 40px;
+        width: 85%;
+        margin: 50px 0;
+    }
+    .article__video {
+        width: 93%;
+        height: 60vh;
+    }
+}
+/*Tab Screens*/
+@media screen and (max-width:764px) {
+    .article__main {
+        height: 85vh;
+        width: 90%;
+        margin: 0 auto;
+        justify-content: space-evenly;
+    }
+    .article__main__image {
+        flex: 0.75;
+        object-fit:cover;
+    }
+    .article__main__image>img{
+        width: 100%;
+        height: 100%;
+    }
+    .article__main__title {
+        flex: 0.15;
+        width: 100%;
+    }
+    .article__main__title>h1 {
+        font-size: 2.2rem;
+        font-weight: 550;
+        color: #2a2a2a;
+        font-family: "Ubuntu","Poppins",sans-serif;
+    }
+    .article__main__date {
+        font-weight: 300;
+        font-size: 1rem;
+        color: rgb(98, 98, 126);
+    }
+    .article__video {
+        width: 85%;
+        height: 55vh;
+    }
+    .article__comments__add{
+        min-height: 40px;
+        width: 90%;
+        margin: 50px 0;
+    }
+    .article__comments__add >form{
+        width: 70%;
+    }
+}
+
+/*Small Tab*/
+@media screen and (max-width:600px) {
+    .article__comments__add>form{
+        width: 85%;
+    }
+    .article__video {
+        width: 90%;
+        height: 50vh;
+    }
+}
+/*Mobile Screens*/
+@media screen and (max-width:450px) {
+    .article__main {
+        height: 85vh;
+        width: 90%;
+        margin: 0 auto;
+        justify-content: flex-start;
+    }
+    .article__main__image {
+        flex: 0.75;
+        width: 120vw;
+        object-fit:cover;
+    }
+    .article__main__title>h1 {
+        font-size: 1.8rem;
+        font-weight: 550;
+    }
+    .article__main__date {
+        font-weight: 300;
+        font-size: 0.8rem;
+        color: rgb(98, 98, 126);
+    }
+    .article__video {
+        width: 95%;
+        height: 40vh;
+    }
+    .article__comments__add{
+        min-height: 40px;
+        width: 100%;
+        margin: 50px 0;
+    }
 }
