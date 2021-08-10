@@ -53,11 +53,17 @@
 
 .article__video {
     width: 90%;
+    height: 70vh;
     margin: 20px auto;
     margin-top: 40px;
+    object-fit: contain;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+#youtube__video {
+    width: 75%;
+    height: 90%;
 }
 .article__rating {
     height: 15vh;
@@ -176,16 +182,12 @@
         width: 100%;
         height: 100%;
     }
-    .article__main__title {
-        flex: 0.15;
-        width: 100%;
-    }
     .article__body {
-        width: 90%;
-        margin: 10px auto;
-        font-weight: 400;
         font-size: 18px;
-        color: #2a2a2a;
+    }
+    #youtube__video {
+        width: 95%;
+        height: 90%;
     }
 }
 @media screen and (max-width:900px) {
@@ -193,6 +195,10 @@
         min-height: 40px;
         width: 85%;
         margin: 50px 0;
+    }
+    .article__video {
+        width: 93%;
+        height: 60vh;
     }
 }
 /*Tab Screens*/
@@ -226,6 +232,10 @@
         font-size: 1rem;
         color: rgb(98, 98, 126);
     }
+    .article__video {
+        width: 85%;
+        height: 55vh;
+    }
     .article__comments__add{
         min-height: 40px;
         width: 90%;
@@ -240,6 +250,10 @@
 @media screen and (max-width:600px) {
     .article__comments__add>form{
         width: 85%;
+    }
+    .article__video {
+        width: 90%;
+        height: 50vh;
     }
 }
 /*Mobile Screens*/
@@ -263,6 +277,10 @@
         font-weight: 300;
         font-size: 0.8rem;
         color: rgb(98, 98, 126);
+    }
+    .article__video {
+        width: 95%;
+        height: 40vh;
     }
     .article__comments__add{
         min-height: 40px;

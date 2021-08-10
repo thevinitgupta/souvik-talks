@@ -124,7 +124,7 @@ function Article() {
             {
                 article?.video && 
                 <div className="article__video">
-                    <iframe width="720" height="405" src={article?.video} title="YouTube video player" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
+                    <iframe id="youtube__video" src={article?.video} title="YouTube video player" frameBorder="0" allow="autoplay" allowFullScreen></iframe>
                 </div>
             }
             <div className="article__rating">
