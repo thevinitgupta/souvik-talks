@@ -151,6 +151,23 @@ function Post() {
         }
         const newPostRef = await db.collection("Articles").doc();
         await newPostRef.set(value);
+        setValue(
+          {
+            title : "",
+            imageUrl : "",
+            time: "",
+            body : "",
+            comments : [],
+            creator : {},
+            tags : [],
+            totalVoters : 0,
+            video : "",
+            avgRating : 0
+          });
+          setTitle("");
+          setVideoUrl("")
+          setSelectedFile(null);
+        window.location="/";
       }
         console.log(value);
     }
