@@ -48,6 +48,9 @@ function App() {
             <Route path="/login">
               <Login/>
             </Route>
+            <Route path="/contact">
+              <Footer/>
+            </Route>
             <Route component={NotFound} />
           </Switch>
         </Router>

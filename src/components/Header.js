@@ -34,7 +34,7 @@ function Header({scrollToContact}) {
 
             {/**For Mobile Screens */}
             {
-                windowWidth<580 && <HamburgerMenu scrollToContact={scrollToContact}/>
+                windowWidth<580 && <HamburgerMenu/>
             }
 
             {/**For Tabs and Laptops */}
@@ -50,7 +50,7 @@ function Header({scrollToContact}) {
                   { loggedIn? 
                     <button className="cta signout__button" onClick={handleSignOut}>Sign Out</button>
                   :
-                    <button className="contact_us" onClick={scrollToContact}>Contact Us</button>
+                    <button className="contact_us" onClick={()=> window.location.href="/contact"}>Contact Us</button>
                   }
             </div>
             }

@@ -4,7 +4,7 @@ import "../css/HamburgerMenu.css"
 import { AuthContext } from '../context/userContext';
 import firebase from 'firebase';
 
-function HamburgerMenu({scrollToContact}) {
+function HamburgerMenu() {
     const {user} = useContext(AuthContext);
     const [loggedIn,setLoggedIn] = useState(false);
     const [hamburgerMenuOpen,setHamburgerMenuOpen] = useState(false);
@@ -42,11 +42,7 @@ function HamburgerMenu({scrollToContact}) {
                   { loggedIn? 
                     <button className="cta signout__button" onClick={handleSignOut}>Sign Out</button>
                   :
-                    <button className="contact_us" onClick={()=>{
-                        toggleMenu();
-                        scrollToContact()
-                        }
-                        }>Contact Us</button>
+                    <button className="contact_us" onClick={()=> window.location.href="/contact"}>Contact Us</button>
                   }
             </div>
             </div>
