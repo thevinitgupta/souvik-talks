@@ -43,6 +43,31 @@
     outline: none;
     font-size: 20px;
 }
+.progress__bar {
+    width: 100%;
+    height: 20px;
+    background-color: #cccccc;
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+.progress__bar__loader {
+    height: 100%;
+    background-color: #ffc93c;
+    transition: all 150ms ease-in;
+}
+.upload__complete{
+    width: 90%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+.upload__done__icon{
+    color: #66DE93;
+    margin-right: 15px;
+    font-size: 18px;
+}
 .post__main__image{
     flex: 0.5;
     width: 70%;
