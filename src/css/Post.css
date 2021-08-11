@@ -9,7 +9,7 @@
 }
 .post__main {
     width: 100%;
-    height: 90px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,6 +23,17 @@
 .post__main__link{
     flex: 0.2;
     margin: 0 auto;
+    font-size: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.post__video__link {
+    flex-grow: 1;
+    font-size: 18px;
+    padding: 7px 3px;
+    margin-left: 20px;
 }
 .main__title__input {
     width: 100%;
@@ -32,12 +43,44 @@
     outline: none;
     font-size: 20px;
 }
+.progress__bar {
+    width: 100%;
+    height: 20px;
+    background-color: #cccccc;
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+.progress__bar__loader {
+    height: 100%;
+    background-color: #ffc93c;
+    transition: all 150ms ease-in;
+}
+.upload__complete{
+    width: 90%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+.upload__done__icon{
+    color: #66DE93;
+    margin-right: 15px;
+    font-size: 18px;
+}
 .post__main__image{
     flex: 0.5;
+    width: 70%;
+    margin: 0 auto;
     margin-bottom: 20px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 #fileToUpload {
     height: 90%;
+    font-size: 20px;
 }
 input[type=file]::file-selector-button {
     height: 100%;
@@ -51,6 +94,8 @@ input[type=file]::file-selector-button {
     border: none;
     color: #fff;
     height: 100%;
+    padding: 15px 10px;
+    font-size: 20px;
 }
 #image__upload__button:hover{
     background-color: #ffc93c;
@@ -75,5 +120,100 @@ input[type=file]::file-selector-button {
     border: none;
     width:30%;
     height: 30px;
-    font-size: 16px;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width : 700px) {
+    .post__main__title{
+        width: 80%;
+    }
+    .post__main__image{
+        width: 80%;
+    }
+    #fileToUpload {
+        height: 75%;
+        width: 60%;
+    }
+    input[type=file]::file-selector-button {
+        height: 86%;
+        padding : 6px 3px;
+        font-size: 18px;
+    }
+    #image__upload__button{
+        height: 80%;
+        padding : 6px 8px;
+        font-size: 18px;
+    }
+    .post__main__link{
+        width: 80%
+    }
+    .post__video__link {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    .post__content {
+        width: 80%;
+    }
+    .post__submit {
+        width: 80%;
+    }
+    .post__submit > button {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width : 500px) {
+    .post__main__title{
+        width: 87%;
+    }
+    .post__main__image{
+        width: 87%;
+    }
+    .post__main__link{
+        width: 87%;
+        font-size: 18px;
+    }
+    .post__content {
+        width: 87%;
+    }
+    .post__submit {
+        width: 87%;
+    }
+}
+@media screen and (max-width : 400px) {
+    .post {
+        min-height: 100vh;
+    }
+    .post__main {
+        height: 160px;
+    }
+    .post__main__title{
+        width: 90%;
+    }
+    .post__main__image{
+        width: 90%;
+    }
+    #fileToUpload {
+        height: 75%;
+        width: 60%;
+    }
+    input[type=file]::file-selector-button {
+        height: 80%;
+        padding : 6px 3px;
+        font-size: 16px;
+    }
+    #image__upload__button{
+        height: 60%;
+        font-size: 16px;
+    }
+    .post__main__link{
+        width: 90%;
+        font-size: 16px;
+    }
+    .post__content {
+        width: 95%;
+    }
+    .post__submit {
+        width: 95%;
+    }
 }

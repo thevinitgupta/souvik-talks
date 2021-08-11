@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import React, { Fragment, useContext, useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import { AuthContext } from "../context/userContext";
-import { Redirect } from "react-router-dom";
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 import "../css/Post.css"
 
 import 'react-quill/dist/quill.snow.css';
@@ -12,6 +12,9 @@ function Post() {
     var storageRef = firebase.storage().ref();
     var db = firebase.firestore();
     const [title,setTitle]= useState("");
+    const [uploadRunning,setUploadRunning] = useState(false);
+    const [uploadPercent,setUploadPercent] = useState(0);
+    const [uploadComplete,setUploadComplete] = useState(false);
     const [loggedIn,setLoggedIn] = useState(false);
     const [videoUrl,setVideoUrl] = useState("");
     const [selectedFile,setSelectedFile] = useState(null);
@@ -32,7 +35,7 @@ function Post() {
       if(user){
         setLoggedIn(true);
       }
-    }, [user])
+    }, [user]);
 
     function addTitle(e){
         setTitle(e.target.value);
@@ -64,6 +67,7 @@ function Post() {
     }
 
     function handleImageUpload(){
+      setUploadRunning(true);
         
         var metadata = {
             contentType: selectedFile.type
@@ -74,10 +78,11 @@ function Post() {
           var uploadTask = storageRef.child('Feature Images/' + selectedFile.name).put(selectedFile, metadata);
           
           // Listen for state changes, errors, and completion of the upload.
-          uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+          uploadTask.on('state_changed', // or 'state_changed'
             (snapshot) => {
               // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              var progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              setUploadPercent(progress);
               console.log('Upload is ' + progress + '% done');
               switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -115,6 +120,8 @@ function Post() {
             () => {
               // Upload completed successfully, now we can get the download URL
               uploadTask.snapshot.ref.getDownloadURL().then((imageUrl) => {
+                setUploadRunning(false);
+                setUploadComplete(true)
                 console.log('File available at', imageUrl);
                 setValue((prevVal)=>{
                     return {
@@ -144,6 +151,23 @@ function Post() {
         }
         const newPostRef = await db.collection("Articles").doc();
         await newPostRef.set(value);
+        setValue(
+          {
+            title : "",
+            imageUrl : "",
+            time: "",
+            body : "",
+            comments : [],
+            creator : {},
+            tags : [],
+            totalVoters : 0,
+            video : "",
+            avgRating : 0
+          });
+          setTitle("");
+          setVideoUrl("")
+          setSelectedFile(null);
+        window.location="/";
       }
         console.log(value);
     }
@@ -172,11 +196,24 @@ function Post() {
                    <input type="text" className="main__title__input" placeholder="Title here" value={title} onChange={(e)=> addTitle(e)}/> 
                 </div>
                 <div className="post__main__image">
+                    {uploadRunning ? 
+                    <div className="progress__bar">
+                        <div className="progress__bar__loader" style={{width : `${uploadPercent}%`}}></div>
+                    </div> :
+                    uploadComplete ? 
+                    <div className="upload__complete">
+                    <DoneAllIcon fontSize="large" className="upload__done__icon"/>
+                    Uploaded Successfully
+                    </div>
+                    :
+                    <>
                     <input  type="file" name="fileToUpload" id="fileToUpload" onChange={fileChangedHandler}/>
                     <input type="submit" value="Upload Image" name="submit" id="image__upload__button" onClick={handleImageUpload}/>
+                    </>
+                    }
                 </div>
                 <div className="post__main__link">
-                  <label htmlFor="post__video__link">Linked Video : </label>
+                  <label htmlFor="post__video__link">Linked Video </label>
                   <input type="text" className="post__video__link" value={videoUrl} onChange={handleVideoUrl} placeholder="https://youtube.com/myvideo"/>
                 </div>
             </div>
