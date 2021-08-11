@@ -176,7 +176,7 @@ function Post() {
                     <input type="submit" value="Upload Image" name="submit" id="image__upload__button" onClick={handleImageUpload}/>
                 </div>
                 <div className="post__main__link">
-                  <label htmlFor="post__video__link">Linked Video : </label>
+                  <label htmlFor="post__video__link">Linked Video </label>
                   <input type="text" className="post__video__link" value={videoUrl} onChange={handleVideoUrl} placeholder="https://youtube.com/myvideo"/>
                 </div>
             </div>
