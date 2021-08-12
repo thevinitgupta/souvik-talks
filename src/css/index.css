@@ -3,9 +3,19 @@ html {
     background-position: fixed;
     background-size: cover;
     scroll-behavior: smooth;
+    scrollbar-width : none;
 }
 ::-webkit-scrollbar{
   width: 0;
+}
+::-moz-scrollbar{
+  width: 0;
+}
+::-moz-selection { 
+  background-color: #ffc93c;
+}
+::selection { 
+  background-color: #ffc93c; 
 }
 body {
   margin: 0;
