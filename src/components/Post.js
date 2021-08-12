@@ -62,8 +62,6 @@ function Post() {
     //handle image upload
     function fileChangedHandler(event){
         setSelectedFile(event.target.files[0]);
-        console.log(event.target.files[0])
-        console.log(user);
     }
 
     function handleImageUpload(){
@@ -73,7 +71,6 @@ function Post() {
             contentType: selectedFile.type
           };
           
-          console.log(metadata);
           // Upload file and metadata to the object 'images/mountains.jpg'
           var uploadTask = storageRef.child('Feature Images/' + selectedFile.name).put(selectedFile, metadata);
           
@@ -83,24 +80,12 @@ function Post() {
               // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
               var progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
               setUploadPercent(progress);
-              console.log('Upload is ' + progress + '% done');
-              switch (snapshot.state) {
-                case firebase.storage.TaskState.PAUSED: // or 'paused'
-                  console.log('Upload is paused');
-                  break;
-                case firebase.storage.TaskState.RUNNING: // or 'running'
-                  console.log('Upload is running');
-                  break;
-                default : 
-                 console.log("No Process Running")
-              }
             }, 
             (error) => {
               // A full list of error codes is available at
               // https://firebase.google.com/docs/storage/web/handle-errors
               switch (error.code) {
                 case 'storage/unauthorized':
-                  console.log("User doesnt have access the object!")
                   // User doesn't have permission to access the object
                   break;
                 case 'storage/canceled':
@@ -114,7 +99,6 @@ function Post() {
                   break;
 
                   default : 
-                  console.log("Unknown Error on Upload")
               }
             }, 
             () => {
@@ -122,7 +106,6 @@ function Post() {
               uploadTask.snapshot.ref.getDownloadURL().then((imageUrl) => {
                 setUploadRunning(false);
                 setUploadComplete(true)
-                console.log('File available at', imageUrl);
                 setValue((prevVal)=>{
                     return {
                         ...prevVal,
@@ -138,12 +121,6 @@ function Post() {
       let time = new Date();
       time = time.toISOString();
       value.time = time;
-      
-      console.log(user)
-      if(!user) {
-        console.log("cannot post if not logged in!")
-      }
-      else {
         value.creator = {
           id : user.uid,
           name : user.displayName,
@@ -168,16 +145,11 @@ function Post() {
           setVideoUrl("")
           setSelectedFile(null);
         window.location="/";
-      }
-        console.log(value);
     }
 
     //handle youtube video url
     function handleVideoUrl(e){
-      console.log(e.target.value)
       setVideoUrl(e.target.value);
-      //https://www.youtube.com/embed/ZBZ6BqoUDsU
-      //https://www.youtube.com/watch?v=ZBZ6BqoUDsU
       setValue((prevVal)=> {
         return {
             ...prevVal,

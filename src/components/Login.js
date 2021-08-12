@@ -1,5 +1,4 @@
 import React, { useContext,} from "react";
-//import "./Login.css"
 import firebase from "../config/firebase";
 import { AuthContext } from "../context/userContext";
 import "../css/Login.css"
@@ -14,39 +13,23 @@ export default function Login() {
       firebase.auth()
       .signInWithPopup(provider)
       .then((result) => {
-  /** @type {firebase.auth.OAuthCredential} */
-  //var credential = result.credential;
-
-  // This gives you a Google Access Token. You can use it to access the Google API.
-  // var token = credential.accessToken;
-  // The signed-in user info.
   var loggedInUser = result.user;
   const isNewUser = result.additionalUserInfo.isNewUser;
   if(isNewUser){
     //delete user if the user is new
      loggedInUser.delete().then(()=>{
       firebase.auth().signOut().then(() => {
-        console.log("Signed Out!")
         alert("Please Sign Up as an Admin First!!")
       })
      });
   }
   else {
-    console.log("is new user :", result.additionalUserInfo.isNewUser)
     window.location = "/";
   }
   
-  // ...
 }).catch((error) => {
-  // Handle Errors here.
-  // var errorCode = error.code;
   var errorMessage = error.message;
-  // The email of the user's account used.
-  // var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  // var credential = error.credential;
   console.error(errorMessage)
-  // ...
 });
   }
   return (

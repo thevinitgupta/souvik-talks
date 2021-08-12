@@ -27,7 +27,7 @@ function Articles() {
           });
      })
      .catch((error) => {
-       console.log("Error getting articles: ", error);
+       console.error("Error getting articles: ", error);
    });
    }
    getArticles();

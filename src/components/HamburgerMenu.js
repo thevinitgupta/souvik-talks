@@ -15,7 +15,6 @@ function HamburgerMenu() {
     function handleSignOut(){
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
-            console.log("Signed Out!")
             toggleMenu();
             alert("You have been Signed Out!")
           }).catch((error) => {

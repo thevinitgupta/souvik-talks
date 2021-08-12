@@ -31,7 +31,7 @@ function Recent({recent}) {
          });
     })
     .catch((error) => {
-      console.log("Error getting articles: ", error);
+      console.error("Error getting articles: ", error);
   });
   }
   getArticles();
@@ -66,9 +66,7 @@ function Recent({recent}) {
             </div>
             </div>}
             
-            <div className="recent__allBlogs" onClick={()=>{
-                console.log(recent);
-            }}>
+            <div className="recent__allBlogs">
                     <Link to={`/all-articles`} className="allBlogs">All Blogs</Link>
                 </div>
         </div>

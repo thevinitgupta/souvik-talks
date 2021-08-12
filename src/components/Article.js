@@ -40,33 +40,28 @@ function Article() {
                 })
                 setAllComments(comments);
                 setAvgRate(dataSnapshot.data().avgRating);
-                console.log(dataSnapshot.data().avgRating);
                  }
                  else {
                      setNotFound(true);
-                     console.log("Doc does not exist!")
                  }
                 
             });
     }
 
     function updateAvgRate(currRate){
-        console.log(avgRate,currRate,article.totalVoters)
         article.totalVoters = article.totalVoters+1;
         docRef.update({
             avgRating : Math.round(((avgRate+currRate)/article.totalVoters + Number.EPSILON) * 10) / 10,
             totalVoters : article.totalVoters
         }).then(()=>{
-            console.log("Average Rating Upated successfully!")
         }).catch((error)=>{
-            console.log(error)
+            console.error(error)
         })
     }
     
       
       function handleRate(val){
         const starId = parseInt(val.target.id);
-        console.log(typeof starId,starId)
         if(starId<rate){
             for(let i=starId;i<rate;i++){
                 val.target.parentElement.children[i].classList.remove("star__active")
@@ -90,12 +85,10 @@ function Article() {
         docRef.update(
             "comments" ,[...allComments,comment]
         ).then(()=>{
-            console.log("updated");
             setNewComment("");
             setFormFocused(false);
         }).catch((error)=>{
-            console.log("Error");
-            console.log(error);
+            console.error(error);
         })
         
       }
@@ -162,7 +155,6 @@ function Article() {
                         {
                           formFocused &&  <button type="submit" id="postComment" onClick={(e)=>{
                               e.preventDefault();
-                              console.log(newComment);
                               postComment();
                           }}>Post</button>
                         }

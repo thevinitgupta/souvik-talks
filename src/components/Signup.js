@@ -30,18 +30,15 @@ function Signup() {
         adminRef.get().then((doc) => {
             if (doc.exists) {
                 const docVal = doc.data();
-                console.log("Document data:", docVal.value);
-                console.log("Event data :",adminPassword,typeof adminPassword);
                 if(docVal.value===adminPassword){
-                    console.log("password matched!")
                     setIsAdmin(true);
                 }
             } else {
                 // doc.data() will be undefined in this case
-                console.log("No such document!");
+                console.error("No such document!");
             }
         }).catch((error) => {
-            console.log("Error getting document:", error);
+            console.error("Error getting document:", error);
         });
         
     }

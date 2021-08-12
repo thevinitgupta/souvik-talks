@@ -13,10 +13,6 @@ import Login from "./Login";
 import NotFound from "./NotFound";
 
 
-const scrollToContact = ()=> window.scrollTo({
-  top : document.documentElement.scrollHeight,
-  behavior:"smooth"
-})
 function App() {
   
   return (
@@ -24,7 +20,7 @@ function App() {
       <div className="app__container">
       <AuthProvider>
         <Router>
-          <Header scrollToContact={scrollToContact}/>
+          <Header />
           <Switch>
             <Route path="/" exact>
               <Top/>

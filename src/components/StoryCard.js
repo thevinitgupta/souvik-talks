@@ -3,8 +3,6 @@ import "../css/StoryCard.css"
 import SouvikTalkLogo from "../images/souviktalks.png";
 
 function StoryCard({article}) {
-
-    console.log(article)
     return (
         <div className="storyCard">
             <div className="storyCard__image">
