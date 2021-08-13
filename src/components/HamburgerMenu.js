@@ -17,6 +17,7 @@ function HamburgerMenu() {
             // Sign-out successful.
             toggleMenu();
             alert("You have been Signed Out!")
+            window.location = "/";
           }).catch((error) => {
             // An error happened.
           });
