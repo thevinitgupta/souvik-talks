@@ -55,7 +55,7 @@
 .progress__bar__loader {
     height: 100%;
     background-color: #ffc93c;
-    transition: all 150ms ease-in;
+    transition: all 500ms ease-in;
 }
 .upload__complete{
     width: 90%;
