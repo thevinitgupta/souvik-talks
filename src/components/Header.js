@@ -20,6 +20,7 @@ function Header({scrollToContact}) {
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
             alert("You have been Signed Out!")
+            window.location = "/";
           }).catch((error) => {
             // An error happened.
           });

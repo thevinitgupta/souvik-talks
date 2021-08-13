@@ -3,6 +3,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import { AuthContext } from "../context/userContext";
 import DoneAllIcon from '@material-ui/icons/DoneAll';
+import Security from "../images/security.png"
 import "../css/Post.css"
 
 import 'react-quill/dist/quill.snow.css';
@@ -195,7 +196,17 @@ function Post() {
             </div>
       </div>
         ) : 
-        <div>Please log in first!</div>
+        <div className="post__fail">
+          <img className="post__fail__img" src={Security} alt="forbidden"/>
+          <h2>Please log in first!</h2>
+          <span className="post__login__link">
+          Go to 
+          <a href="/login">
+          Login
+          </a> 
+          Page
+          </span>
+        </div>
       }
     </Fragment>
       

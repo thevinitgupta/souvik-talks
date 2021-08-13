@@ -55,7 +55,7 @@
 .progress__bar__loader {
     height: 100%;
     background-color: #ffc93c;
-    transition: all 150ms ease-in;
+    transition: all 500ms ease-in;
 }
 .upload__complete{
     width: 90%;
@@ -122,6 +122,31 @@ input[type=file]::file-selector-button {
     height: 30px;
     font-size: 20px;
 }
+.post__fail {
+    width : 90%;
+    height: 70vh;
+    margin: 50px auto;
+    text-align: center;
+}
+.post__fail__img {
+    width : 40%;
+    height: 60%;
+}
+.post__fail>h2 {
+    color : #da5151;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+.post__login__link {
+    font-size: 1.3rem;
+}
+.post__login__link>a {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #3dad68;
+}
 
 
 @media screen and (max-width : 700px) {
@@ -161,6 +186,14 @@ input[type=file]::file-selector-button {
     .post__submit > button {
         font-size: 18px;
     }
+    .post__fail__img {
+        width : 65%;
+        height: 60%;
+    }
+    .post__fail > h2{
+        font-size: 1.8rem;
+    }
+    
 }
 @media screen and (max-width : 500px) {
     .post__main__title{
@@ -178,6 +211,9 @@ input[type=file]::file-selector-button {
     }
     .post__submit {
         width: 87%;
+    }
+    .post__fail__img {
+        width : 75%;
     }
 }
 @media screen and (max-width : 400px) {
@@ -215,5 +251,21 @@ input[type=file]::file-selector-button {
     }
     .post__submit {
         width: 95%;
+    }
+    .post__fail__img {
+        width : 90%;
+    }
+}
+
+@media screen and (max-width : 300px) {
+    .post__fail__img {
+        width : 100%;
+        height: 50%;
+    }
+    .post__login__link {
+        font-size: 1rem;
+    }
+    .post__login__link > a {
+        font-size: 1.3rem;
     }
 }
