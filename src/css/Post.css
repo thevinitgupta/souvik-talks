@@ -109,6 +109,9 @@ input[type=file]::file-selector-button {
     margin-top: 30px;
     width: 70%;
 }
+.ql-container {
+    font-size: 20px !important;
+}
 .post__submit {
     width: 70%;
     display: flex;
@@ -121,6 +124,12 @@ input[type=file]::file-selector-button {
     width:30%;
     height: 30px;
     font-size: 20px;
+    font-size: 1.4rem;
+    transition: all 500ms ease-in-out;
+}
+.post__submit > button:hover {
+    margin-top: 8px;
+    cursor: pointer;
 }
 .post__fail {
     width : 90%;
