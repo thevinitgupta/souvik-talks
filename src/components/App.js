@@ -11,6 +11,7 @@ import Articles from './Articles';
 import Article from './Article';
 import Login from "./Login";
 import NotFound from "./NotFound";
+import ActionButton from "./ActionButton";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Router>
+        <ActionButton/>
       </AuthProvider>        
       </div>
     </div>

@@ -11,8 +11,9 @@
     background-color: #fff;
     scrollbar-width : none;
     box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
--webkit-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
--moz-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
+    -webkit-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
+    -moz-box-shadow: 16px 38px 114px 7px rgba(71,69,69,0.63);
+    position: relative;
 }
 .app::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
