@@ -20,6 +20,7 @@ function Post() {
     const [videoUrl,setVideoUrl] = useState("");
     const [selectedFile,setSelectedFile] = useState(null);
     const [value,setValue] = useState({
+        ratings : [0,0,0,0,0],
         title : "",
         imageUrl : "",
         time: "",
@@ -131,6 +132,7 @@ function Post() {
         await newPostRef.set(value);
         setValue(
           {
+            ratings : [0,0,0,0,0],
             title : "",
             imageUrl : "",
             time: "",

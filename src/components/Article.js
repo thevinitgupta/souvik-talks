@@ -48,11 +48,28 @@ function Article() {
             });
     }
 
+    function getUpdatedAverage(currRate,totalVoters){
+        let sumOfRatings = 0;
+        article.ratings[currRate-1] = article.ratings[currRate-1] + 1;
+        article.ratings.forEach((rating,star)=>{
+            sumOfRatings += rating*(star+1);
+        })
+        return sumOfRatings/totalVoters; 
+    }
+    function getTotalVoters(ratings){
+        let totalVoters = 0;
+        ratings.forEach((voter)=>{
+            totalVoters += voter;
+        })
+        return totalVoters;
+    }
+
     function updateAvgRate(currRate){
-        article.totalVoters = article.totalVoters+1;
+        let updatedAvg = getUpdatedAverage(currRate,article.totalVoters+1);
         docRef.update({
-            avgRating : Math.round(((avgRate+currRate)/article.totalVoters + Number.EPSILON) * 10) / 10,
-            totalVoters : article.totalVoters
+            avgRating : Number(updatedAvg.toFixed(1)),
+            totalVoters : getTotalVoters(article.ratings),
+            ratings : article.ratings
         }).then(()=>{
         }).catch((error)=>{
             console.error(error)
